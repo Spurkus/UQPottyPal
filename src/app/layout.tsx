@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { getThemeFromCookie } from "@/helper/cookiesFunction";
 import { GlobalThemeContextProvider } from "@/contexts/GlobalTheme";
-import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+
+import "./fonts.css";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "UQPottyPal",
