@@ -1,5 +1,22 @@
 import type { Config } from "tailwindcss";
 
+type DaisyUITheme = {
+  [key: string]: string | Record<string, string>;
+};
+
+const addCustomStyle = (theme: DaisyUITheme) => ({
+  ...theme,
+  fontFamily: "Satoshi",
+  ".btn-nav-link": {
+    "border-color": "transparent",
+    "background-color": "transparent",
+  },
+  ".btn-nav-link:hover": {
+    "border-color": "transparent",
+    "background-color": "transparent",
+  },
+});
+
 const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -15,8 +32,12 @@ const config: Config = {
   },
   plugins: [require("daisyui")],
   daisyui: {
-    dark: { ...require("daisyui/src/theming/themes").dark, fontFamily: "Satoshi" },
-    light: { ...require("daisyui/src/theming/themes").light, fontFamily: "Satoshi" },
+    themes: [
+      {
+        dark: addCustomStyle({ ...require("daisyui/src/theming/themes")["dark"] }),
+        light: addCustomStyle({ ...require("daisyui/src/theming/themes")["light"] }),
+      },
+    ],
   },
 };
 export default config;
