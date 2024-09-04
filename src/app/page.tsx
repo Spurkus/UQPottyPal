@@ -19,7 +19,7 @@ const Home = () => {
           <Link href="/dashboard" className="btn btn-primary btn-sm px-4">
             Get Started
           </Link>
-          <Link href="/dashboard" className="btn btn-primary btn-sm px-4">
+          <Link href="/dashboard" className="btn btn-outline btn-sm px-4">
             About
           </Link>
         </div>
