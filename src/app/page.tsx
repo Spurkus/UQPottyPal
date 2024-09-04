@@ -5,13 +5,13 @@ const Home = () => {
   return (
     <div className="flex w-full">
       <div className="ml-28 mt-24 flex w-[42%] flex-col space-y-4">
-        <h1 className="font-regular mb-4 font-satoshi text-5xl">Find cool toilets with UQPottyPal {">.<"}</h1>
-        <p className="font-satoshi text-lg">
+        <h1 className="mb-4 text-5xl">Find cool toilets with UQPottyPal {">.<"}</h1>
+        <p className="text-lg">
           UQPottyPal is your go-to companion for finding and reviewing public restrooms on and around the University of
           Queensland campus. Whether you’re a student, staff member, or visitor, UQPottyPal helps you locate the
           cleanest and most accessible restrooms nearby.
         </p>
-        <p className="font-satoshi text-lg">
+        <p className="text-lg">
           Designed to make your campus experience more comfortable, UQPottyPal is the trusted guide for all your
           restroom needs.
         </p>

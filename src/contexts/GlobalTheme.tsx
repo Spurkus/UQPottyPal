@@ -1,9 +1,6 @@
 "use client";
 import { saveThemeToCookie } from "@/helper/cookiesFunction";
 import { createContext, useState, useContext } from "react";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export interface GlobalThemeType {
   theme: string;
@@ -34,7 +31,7 @@ export const GlobalThemeContextProvider = ({ children, initialTheme }: GlobalThe
   return (
     <GlobalTheme.Provider value={{ theme, setTheme, toggleTheme }}>
       <html lang="en" data-theme={theme}>
-        <body className={inter.className}>{children}</body>
+        <body className="font-satoshi">{children}</body>
       </html>
     </GlobalTheme.Provider>
   );
