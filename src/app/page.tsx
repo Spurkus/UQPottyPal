@@ -4,7 +4,7 @@ import Link from "next/link";
 const Home = () => {
   return (
     <div className="flex w-full">
-      <div className="ml-28 mt-24 flex w-[42%] flex-col space-y-4">
+      <div className="ml-[10%] mt-[12%] flex w-[42%] flex-col space-y-4">
         <h1 className="mb-4 text-5xl">Find cool toilets with UQPottyPal {">.<"}</h1>
         <p className="text-lg">
           UQPottyPal is your go-to companion for finding and reviewing public restrooms on and around the University of
@@ -24,7 +24,7 @@ const Home = () => {
           </Link>
         </div>
       </div>
-      <Image src="/toilet.png" alt="toilet" className="ml-auto mt-6 w-[28rem]" width={1200} height={1200} />
+      <Image src="/toilet.png" alt="toilet" className="ml-auto mt-6 w-[36%]" width={1200} height={1200} />
     </div>
   );
 };
