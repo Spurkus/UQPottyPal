@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Head from "next/head";
 import { getThemeFromCookie } from "@/helper/cookiesFunction";
 import { GlobalThemeContextProvider } from "@/contexts/GlobalTheme";
 import Navbar from "@/components/Navbar";
@@ -6,6 +7,7 @@ import Footer from "@/components/Footer";
 
 import "./fonts.css";
 import "./globals.css";
+import "mapbox-gl/dist/mapbox-gl.css";
 
 export const metadata: Metadata = {
   title: "UQPottyPal",
@@ -18,6 +20,10 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
 
   return (
     <GlobalThemeContextProvider initialTheme={theme}>
+      <Head>
+        {/* Mapbox CSS */}
+        <link href="https://api.mapbox.com/mapbox-gl-js/v3.6.0/mapbox-gl.css" rel="stylesheet" />
+      </Head>
       <Navbar />
       {children}
       <Footer />
