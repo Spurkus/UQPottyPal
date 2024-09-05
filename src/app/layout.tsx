@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 
 import "./fonts.css";
 import "./globals.css";
+import { getAllToilets } from "@/helper/firestoreFunctions";
 
 export const metadata: Metadata = {
   title: "UQPottyPal",
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 
 const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>) => {
   const theme = await getThemeFromCookie();
+
   return (
     <GlobalThemeContextProvider initialTheme={theme}>
       <Navbar />
