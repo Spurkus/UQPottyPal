@@ -8,7 +8,7 @@ const Footer = () => {
           <span className="text-base font-medium">Home</span>
         </Link>
         <Link href="/dashboard" className="btn-nav-link btn btn-sm shadow-none">
-          <span className="text-base font-medium">dashboard</span>
+          <span className="text-base font-medium">Dashboard</span>
         </Link>
         <Link href="/toilets" className="btn-nav-link btn btn-sm shadow-none">
           <span className="text-base font-medium">Toilets</span>

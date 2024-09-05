@@ -11,7 +11,7 @@ const Navbar = () => {
       </div>
       <ul className="mr-6 flex flex-row justify-center space-x-4">
         <li>
-          <Link href="/" className="btn-nav-link btn shadow-none">
+          <Link href="/dashboard" className="btn-nav-link btn shadow-none">
             <span className="text-base">Dashboard</span>
           </Link>
         </li>
