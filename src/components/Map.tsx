@@ -3,8 +3,6 @@ import { useEffect, useRef } from "react";
 import mapboxgl from "mapbox-gl";
 import useMapControls from "@/hooks/useMapControls";
 
-mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN as string;
-
 const INITIAL_COORDINATES = { lng: 153.01301, lat: -27.49748, zoom: 16 };
 
 const Map = () => {
@@ -16,6 +14,7 @@ const Map = () => {
 
   // Initialize the map
   useEffect(() => {
+    mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN as string;
     if (!mapContainer.current) return; // Initialize the map only once
 
     // Create the map
