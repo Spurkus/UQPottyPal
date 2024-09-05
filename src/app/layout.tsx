@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Head from "next/head";
-import { getThemeFromCookie } from "@/helper/cookiesFunction";
+import { getThemeFromCookie } from "@/helper/cookiesFunctions";
 import { GlobalThemeContextProvider } from "@/contexts/GlobalTheme";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -23,6 +23,7 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
       <Head>
         {/* Mapbox CSS */}
         <link href="https://api.mapbox.com/mapbox-gl-js/v3.6.0/mapbox-gl.css" rel="stylesheet" />
+        <link rel="icon" href="/logo.svg" />
       </Head>
       <Navbar />
       {children}

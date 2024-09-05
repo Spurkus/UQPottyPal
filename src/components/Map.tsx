@@ -2,6 +2,9 @@
 import { useEffect, useRef } from "react";
 import mapboxgl from "mapbox-gl";
 import useMapControls from "@/hooks/useMapControls";
+import { getAllToilets } from "@/helper/firestoreFunctions";
+import { convertToiletsToGeoJSON } from "@/helper/helperFunctions";
+import { Toilet } from "@/types";
 
 const INITIAL_COORDINATES = { lng: 153.01301, lat: -27.49748, zoom: 16 };
 
@@ -21,7 +24,7 @@ const Map = () => {
 
     // Create the map
     map.current = new mapboxgl.Map({
-      container: mapContainer.current,
+      container: mapContainer.current!,
       style: process.env.NEXT_PUBLIC_MAPBOX_STYLE as string,
       center: [INITIAL_COORDINATES.lng, INITIAL_COORDINATES.lat],
       zoom: INITIAL_COORDINATES.zoom,
@@ -42,7 +45,27 @@ const Map = () => {
       setZoom(+map!.current!.getZoom().toFixed(2));
     });
 
-    // Add
+    // Add toilet markers
+    map.current.on("load", async () => {
+      const toilets = (await getAllToilets()) as Toilet[];
+      console.log(toilets);
+      map.current!.addSource("toilets", {
+        type: "geojson",
+        data: convertToiletsToGeoJSON(toilets),
+      });
+
+      map.current!.addLayer({
+        id: "toilets-layer",
+        type: "symbol",
+        source: "toilets",
+        layout: {
+          "icon-image": "toilet",
+          "icon-size": 0.1,
+        },
+      });
+    });
+
+    return () => map.current!.remove();
   }, [setLng, setLat, setZoom]);
 
   const ZoomButton = () => {

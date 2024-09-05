@@ -1,5 +1,5 @@
 "use client";
-import { saveThemeToCookie } from "@/helper/cookiesFunction";
+import { saveThemeToCookie } from "@/helper/cookiesFunctions";
 import { createContext, useState, useContext } from "react";
 
 export interface GlobalThemeType {
