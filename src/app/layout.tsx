@@ -6,7 +6,6 @@ import Footer from "@/components/Footer";
 
 import "./fonts.css";
 import "./globals.css";
-import { getAllToilets } from "@/helper/firestoreFunctions";
 
 export const metadata: Metadata = {
   title: "UQPottyPal",
