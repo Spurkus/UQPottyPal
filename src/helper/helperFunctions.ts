@@ -11,6 +11,8 @@ export const convertToiletsToGeoJSON = (toilets: Toilet[]): GeoToilets => {
       },
       properties: {
         id: toilet.id,
+        name: toilet.name,
+        description: toilet.description,
         building: toilet.building,
         floor: toilet.floor,
       },
