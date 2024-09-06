@@ -2,6 +2,8 @@ import { GeoPoint } from "firebase/firestore";
 
 export type Toilet = {
   id: string;
+  name: string;
+  description: string;
   building: string;
   floor: string;
   location: GeoPoint;
@@ -15,6 +17,8 @@ export type GeoToilet = {
   };
   properties: {
     id: string;
+    name: string;
+    description: string;
     building: string;
     floor: string;
   };

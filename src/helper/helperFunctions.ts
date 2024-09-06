@@ -1,4 +1,5 @@
 import { Toilet, GeoToilet, GeoToilets } from "@/types";
+import { GeoPoint } from "firebase/firestore";
 
 export const convertToiletsToGeoJSON = (toilets: Toilet[]): GeoToilets => {
   const features = toilets.map((toilet) => {
@@ -20,4 +21,8 @@ export const convertToiletsToGeoJSON = (toilets: Toilet[]): GeoToilets => {
     type: "FeatureCollection",
     features,
   };
+};
+
+export const convertNumberArrayToGeoPoint = (coordinates: number[]): GeoPoint => {
+  return new GeoPoint(coordinates[1], coordinates[0]);
 };

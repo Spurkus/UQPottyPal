@@ -23,7 +23,6 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
       <Head>
         {/* Mapbox CSS */}
         <link href="https://api.mapbox.com/mapbox-gl-js/v3.6.0/mapbox-gl.css" rel="stylesheet" />
-        <link rel="icon" href="/logo.svg" />
       </Head>
       <Navbar />
       {children}
