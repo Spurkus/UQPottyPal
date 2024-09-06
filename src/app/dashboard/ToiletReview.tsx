@@ -161,7 +161,7 @@ const ToiletReview = () => {
     <div
       className={`h-full flex-col space-y-4 overflow-y-auto transition-all duration-500 ${toilet ? "w-[30%]" : "w-0 opacity-0"}`}
     >
-      <div className={`w-full rounded-3xl bg-base-300 p-5 ${menu === "overview" && "h-full"}`}>
+      <div className={`w-full overflow-y-auto rounded-3xl bg-base-300 p-5 ${menu === "overview" && "h-full"}`}>
         <div className={`flex flex-col ${!toiletInfo && "hidden"} `}>
           <Menu menu={menu} setMenu={setMenu} visible={menuVisibility} />
           {menu === "overview" && <Overview toiletInfo={toiletInfo} />}
