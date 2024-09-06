@@ -96,9 +96,9 @@ const Review = () => {
           </div>
         </div>
         <p className="text-wrap">
-          This is a review of the toilet. It was a great experience. Although it was incredibly smelly but that's to be
+          This is a review of the toilet. It was a great experience. Although it was incredibly smelly but that is to be
           expected for a public toilet. The cleanliness was top-notch. The accessibility was great. The vibe was a bit
-          off but that's okay.
+          off but oh well.
         </p>
       </div>
       <div className="collapse-content px-5">
