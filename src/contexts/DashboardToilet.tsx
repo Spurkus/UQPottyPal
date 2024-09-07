@@ -31,6 +31,7 @@ export const DashboardToiletContextProvider = ({ children }: { children: React.R
   const [lat, setLat] = useMapControls(INITIAL_COORDINATES.lat, map.current, "lat");
   const [zoom, setZoom, moveZoomTo] = useMapControls(INITIAL_COORDINATES.zoom, map.current, "zoom");
   const [toilet, setToilet] = useState<Toilet | null>(null);
+  const [oldToilet, setOldToilet] = useState<Toilet | null>(null);
 
   const moveTo = useCallback((lat: number, lng: number, zoom?: number) => {
     if (!map.current) return;
@@ -112,10 +113,15 @@ export const DashboardToiletContextProvider = ({ children }: { children: React.R
   }, [setLng, setLat, setZoom]);
 
   useEffect(() => {
-    if (!toilet) return;
-    const offset = toilet ? 0.00065 : 0;
-    moveTo(toilet.location.latitude, toilet.location.longitude + offset, 18);
-  }, [toilet, moveTo, moveZoomTo]);
+    if (!oldToilet && !toilet) return;
+    setOldToilet(toilet);
+
+    const windowWidth = window.innerWidth;
+    const offset = toilet ? windowWidth * 0.0000003 : 0;
+    const latitude = toilet?.location.latitude ?? oldToilet?.location.latitude;
+    const longitude = toilet?.location.longitude ?? oldToilet?.location.longitude;
+    moveTo(latitude ?? INITIAL_COORDINATES.lat, (longitude ?? INITIAL_COORDINATES.lng) + offset, 18);
+  }, [toilet, oldToilet, moveTo, moveZoomTo]);
 
   return (
     <DashboardToilet.Provider
