@@ -32,3 +32,19 @@ export const convertNumberArrayToGeoPoint = (coordinates: number[]): GeoPoint =>
 export const capitaliseFirstLetter = (string: string): string => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
+
+export const showModal = (elementID: string, show: () => void) => {
+  const element = document.getElementById(elementID);
+  if (element instanceof HTMLDialogElement) {
+    element.showModal();
+    show();
+  }
+};
+
+export const closeModal = (elementID: string, close: () => void) => {
+  const element = document.getElementById(elementID);
+  if (element instanceof HTMLDialogElement) {
+    element.close();
+    close();
+  }
+};

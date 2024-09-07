@@ -1,17 +1,18 @@
 import { useDashboardToilet } from "@/contexts/DashboardToilet";
-import { capitaliseFirstLetter } from "@/helper/helperFunctions";
+import { capitaliseFirstLetter, showModal } from "@/helper/helperFunctions";
 import { Toilet } from "@/types";
 import { useState, useEffect } from "react";
+import ReviewModal from "./ReviewModal";
 
-type MenuProps = {
+interface MenuProps {
   menu: string;
   setMenu: React.Dispatch<React.SetStateAction<string>>;
   visible: boolean;
-};
+}
 
-type OverviewProps = {
+interface OverviewProps {
   toiletInfo: Toilet | null;
-};
+}
 
 const MenuButton = ({
   menu,
@@ -25,11 +26,12 @@ const MenuButton = ({
   return (
     <div className="w-full">
       <input
-        className="btn join-item w-full"
+        className="btn btn-outline join-item w-full"
         type="radio"
         name="options"
         aria-label={capitaliseFirstLetter(name)}
         onClick={() => setMenu(name)}
+        onChange={() => {}}
         checked={menu === name}
       />
     </div>
@@ -112,7 +114,7 @@ const Review = () => {
         <progress className="progress progress-accent" value="80" max="100" />
         <h4 className="mt-1.5 font-bold leading-3">Accessibility</h4>
         <progress className="progress progress-success" value="60" max="100" />
-        <h3 className="mt-1.5 font-bold leading-3">Vibe</h3>
+        <h4 className="mt-1.5 font-bold leading-3">Vibe</h4>
         <progress className="progress progress-info" value="20" max="100" />
       </div>
     </div>
@@ -130,10 +132,18 @@ const Reviews = () => {
 };
 
 const ToiletReview = () => {
+  // Toilet state
   const { toilet } = useDashboardToilet();
   const [toiletInfo, setToiletInfo] = useState(toilet);
+
+  // Menu state
   const [menu, setMenu] = useState("overview");
   const [menuVisibility, setMenuVisibility] = useState(!!toilet);
+
+  // Review Modal state
+  const [showReviewModal, setShowReviewModal] = useState(false);
+  const show = () => setShowReviewModal(true);
+  const close = () => setShowReviewModal(false);
 
   // Show the toilet review when the toilet is set and hide it when the toilet is unset
   useEffect(() => {
@@ -169,12 +179,20 @@ const ToiletReview = () => {
         <div className={`flex flex-col ${!toiletInfo && "hidden"} `}>
           <Menu menu={menu} setMenu={setMenu} visible={menuVisibility} />
           {menu === "overview" && <Overview toiletInfo={toiletInfo} />}
-          {menu === "reviews" && <h1 className="truncate text-wrap text-3xl font-bold">{toiletInfo?.name} Reviews</h1>}
+          {menu === "reviews" && (
+            <>
+              <h1 className="mb-2 truncate text-wrap text-3xl font-bold">{toiletInfo?.name} Reviews</h1>
+              <button className="btn btn-outline btn-sm" onClick={() => showModal("review_modal", show)}>
+                Add Review
+              </button>
+            </>
+          )}
         </div>
       </div>
       <div className={`flex-1 space-y-4 overflow-y-auto ${menu === "overview" && "hidden"}`}>
         {menu === "reviews" && <Reviews />}
       </div>
+      <ReviewModal />
     </div>
   );
 };
