@@ -28,3 +28,7 @@ export const convertToiletsToGeoJSON = (toilets: Toilet[]): GeoToilets => {
 export const convertNumberArrayToGeoPoint = (coordinates: number[]): GeoPoint => {
   return new GeoPoint(coordinates[1], coordinates[0]);
 };
+
+export const capitaliseFirstLetter = (string: string): string => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};

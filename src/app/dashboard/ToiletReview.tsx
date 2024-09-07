@@ -1,4 +1,5 @@
 import { useDashboardToilet } from "@/contexts/DashboardToilet";
+import { capitaliseFirstLetter } from "@/helper/helperFunctions";
 import { Toilet } from "@/types";
 import { useState, useEffect } from "react";
 
@@ -12,33 +13,36 @@ type OverviewProps = {
   toiletInfo: Toilet | null;
 };
 
-const Menu = ({ menu, setMenu, visible }: MenuProps) => {
+const MenuButton = ({
+  menu,
+  setMenu,
+  name,
+}: {
+  menu: string;
+  setMenu: React.Dispatch<React.SetStateAction<string>>;
+  name: string;
+}) => {
   return (
-    <div className={`join mb-3 justify-center ${!visible && "hidden"}`}>
+    <div className="w-full">
       <input
-        className="btn join-item"
+        className="btn join-item w-full"
         type="radio"
         name="options"
-        aria-label="Overview"
-        onClick={() => setMenu("overview")}
-        checked={menu === "overview"}
+        aria-label={capitaliseFirstLetter(name)}
+        onClick={() => setMenu(name)}
+        checked={menu === name}
       />
-      <input
-        className="btn join-item"
-        type="radio"
-        name="options"
-        aria-label="Reviews"
-        onClick={() => setMenu("reviews")}
-        checked={menu === "reviews"}
-      />
-      <input
-        className="btn join-item"
-        type="radio"
-        name="options"
-        aria-label="Floors"
-        onClick={() => setMenu("floors")}
-        checked={menu === "floors"}
-      />
+    </div>
+  );
+};
+
+const Menu = ({ menu, setMenu, visible }: MenuProps) => {
+  const menuItems = ["overview", "reviews", "floors"];
+  return (
+    <div className={`join mb-3 w-full justify-center ${!visible && "hidden"}`}>
+      {menuItems.map((item) => (
+        <MenuButton key={item} menu={menu} setMenu={setMenu} name={item} />
+      ))}
     </div>
   );
 };
@@ -159,7 +163,7 @@ const ToiletReview = () => {
 
   return (
     <div
-      className={`h-full flex-col space-y-4 overflow-y-auto transition-all duration-500 ${toilet ? "w-[30%]" : "w-0 opacity-0"}`}
+      className={`flex max-h-[80vh] flex-col space-y-4 transition-all duration-500 ${toilet ? "w-[30%]" : "w-0 opacity-0"}`}
     >
       <div className={`w-full overflow-y-auto rounded-3xl bg-base-300 p-5 ${menu === "overview" && "h-full"}`}>
         <div className={`flex flex-col ${!toiletInfo && "hidden"} `}>
@@ -168,7 +172,9 @@ const ToiletReview = () => {
           {menu === "reviews" && <h1 className="truncate text-wrap text-3xl font-bold">{toiletInfo?.name} Reviews</h1>}
         </div>
       </div>
-      {menu === "reviews" && <Reviews />}
+      <div className={`flex-1 space-y-4 overflow-y-auto ${menu === "overview" && "hidden"}`}>
+        {menu === "reviews" && <Reviews />}
+      </div>
     </div>
   );
 };
