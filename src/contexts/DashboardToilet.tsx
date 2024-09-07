@@ -116,8 +116,11 @@ export const DashboardToiletContextProvider = ({ children }: { children: React.R
     if (!oldToilet && !toilet) return;
     setOldToilet(toilet);
 
+    // Move the map to the toilet location with offset depending on the screen width
     const windowWidth = window.innerWidth;
     const offset = toilet ? windowWidth * 0.0000003 : 0;
+
+    // oldToilet is used to prevent the map from moving when the toilet is closed
     const latitude = toilet?.location.latitude ?? oldToilet?.location.latitude;
     const longitude = toilet?.location.longitude ?? oldToilet?.location.longitude;
     moveTo(latitude ?? INITIAL_COORDINATES.lat, (longitude ?? INITIAL_COORDINATES.lng) + offset, 18);
