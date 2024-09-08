@@ -94,7 +94,7 @@ const ToiletReviewDisplay = ({
         </div>
       </div>
       <div className={`flex-1 space-y-4 overflow-y-auto overflow-x-hidden ${menu === "overview" && "hidden"}`}>
-        {menu === "reviews" && <Reviews reviews={reviews} />}
+        {menu === "reviews" && <Reviews reviews={reviews} setReviews={setReviews} />}
         {menu === "others" && <OtherToilets toilets={toiletsInBuilding} />}
       </div>
       <ReviewModal />

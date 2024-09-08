@@ -1,6 +1,6 @@
 import { Review } from "@/types";
 import { db } from "../../firebase";
-import { collection, doc, getDocs, query, setDoc, where } from "firebase/firestore";
+import { collection, deleteDoc, doc, getDocs, query, setDoc, where } from "firebase/firestore";
 import { Toilet } from "@/types";
 
 export const getAllToilets = async (): Promise<Toilet[]> => {
@@ -20,6 +20,12 @@ export const editCreatedReview = async (review: Review) => {
   const reviewCollection = collection(db, "review");
   const reviewRef = doc(reviewCollection, review.id);
   await setDoc(reviewRef, review);
+};
+
+export const deleteReview = async (reviewID: string) => {
+  const reviewCollection = collection(db, "review");
+  const reviewRef = doc(reviewCollection, reviewID);
+  await deleteDoc(reviewRef);
 };
 
 export const getReviewsForToilet = async (toiletID: string): Promise<Review[]> => {
