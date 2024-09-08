@@ -1,5 +1,7 @@
 import { Toilet, GeoToilet, GeoToilets } from "@/types";
 import { GeoPoint } from "firebase/firestore";
+import { SetStateAction } from "react";
+import confetti from "canvas-confetti";
 
 export const convertToiletsToGeoJSON = (toilets: Toilet[]): GeoToilets => {
   const features = toilets.map((toilet) => {
@@ -33,18 +35,40 @@ export const capitaliseFirstLetter = (string: string): string => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
 
-export const showModal = (elementID: string, show: () => void) => {
+export const showModal = (elementID: string, setShow: React.Dispatch<SetStateAction<boolean>>) => {
   const element = document.getElementById(elementID);
   if (element instanceof HTMLDialogElement) {
     element.showModal();
-    show();
+    setShow(true);
   }
 };
 
-export const closeModal = (elementID: string, close: () => void) => {
+export const closeModal = (elementID: string, setShow: React.Dispatch<SetStateAction<boolean>>) => {
   const element = document.getElementById(elementID);
   if (element instanceof HTMLDialogElement) {
     element.close();
-    close();
+    setShow(false);
   }
+};
+
+export const triggerConfetti = () => {
+  const defaults = {
+    zIndex: 10000000,
+    spread: 360,
+    ticks: 50,
+    decay: 0.94,
+    startVelocity: 30,
+  };
+
+  confetti({
+    ...defaults,
+    particleCount: 45,
+    scalar: 2,
+  });
+
+  confetti({
+    ...defaults,
+    particleCount: 20,
+    scalar: 0.75,
+  });
 };

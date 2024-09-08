@@ -142,8 +142,6 @@ const ToiletReview = () => {
 
   // Review Modal state
   const [showReviewModal, setShowReviewModal] = useState(false);
-  const show = () => setShowReviewModal(true);
-  const close = () => setShowReviewModal(false);
 
   // Show the toilet review when the toilet is set and hide it when the toilet is unset
   useEffect(() => {
@@ -182,7 +180,7 @@ const ToiletReview = () => {
           {menu === "reviews" && (
             <>
               <h1 className="mb-2 truncate text-wrap text-3xl font-bold">{toiletInfo?.name} Reviews</h1>
-              <button className="btn btn-outline btn-sm" onClick={() => showModal("review_modal", show)}>
+              <button className="btn btn-outline btn-sm" onClick={() => showModal("review_modal", setShowReviewModal)}>
                 Add Review
               </button>
             </>
@@ -192,7 +190,7 @@ const ToiletReview = () => {
       <div className={`flex-1 space-y-4 overflow-y-auto ${menu === "overview" && "hidden"}`}>
         {menu === "reviews" && <Reviews />}
       </div>
-      <ReviewModal />
+      <ReviewModal open={showReviewModal} setOpen={setShowReviewModal} toiletID={toilet?.id ?? ""} />
     </div>
   );
 };

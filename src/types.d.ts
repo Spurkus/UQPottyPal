@@ -30,10 +30,11 @@ export type GeoToilets = {
 };
 
 export type Review = {
-  userID: string;
+  id: string;
   toiletID: string;
-  rating: 1 | 2 | 3 | 4 | 5;
+  username: string;
   comment: string;
+  rating: number;
   privacy: number;
   cleanliness: number;
   accessibility: number;
