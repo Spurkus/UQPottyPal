@@ -7,6 +7,7 @@ import Reviews from "./DisplayReviews";
 import Overview from "./Overview";
 import OtherToilets from "./OtherToilets";
 import { getReviewsForToilet, getToiletsInBuilding } from "@/helper/firestoreFunctions";
+import { AddEditReviewContextProvider, useAddEditReview } from "@/contexts/AddEditReview";
 
 interface MenuProps {
   menu: string;
@@ -14,15 +15,23 @@ interface MenuProps {
   visible: boolean;
 }
 
-const MenuButton = ({
-  menu,
-  setMenu,
-  name,
-}: {
+interface MenuButtonProps {
   menu: string;
   setMenu: React.Dispatch<React.SetStateAction<string>>;
   name: string;
-}) => {
+}
+
+interface ToiletReviewDisplayProps {
+  toiletInfo: Toilet | null;
+  reviews: Review[];
+  toiletsInBuilding: Toilet[];
+  menu: string;
+  setMenu: React.Dispatch<React.SetStateAction<string>>;
+  menuVisibility: boolean;
+  setReviews: React.Dispatch<React.SetStateAction<Review[]>>;
+}
+
+const MenuButton = ({ menu, setMenu, name }: MenuButtonProps) => {
   return (
     <div className="w-full">
       <input
@@ -49,6 +58,50 @@ const Menu = ({ menu, setMenu, visible }: MenuProps) => {
   );
 };
 
+const ToiletReviewDisplay = ({
+  toiletInfo,
+  reviews,
+  toiletsInBuilding,
+  menu,
+  setMenu,
+  menuVisibility,
+  setReviews,
+}: ToiletReviewDisplayProps) => {
+  const { setVisible, setEditReview } = useAddEditReview();
+
+  const handleOpenReviewModal = () => {
+    setEditReview(null);
+    showModal("review_modal", setVisible);
+  };
+
+  return (
+    <>
+      <div className={`w-full overflow-y-auto rounded-3xl bg-base-300 p-5 ${menu === "overview" && "h-full"}`}>
+        <div className={`flex flex-col ${!toiletInfo && "hidden"} `}>
+          <Menu menu={menu} setMenu={setMenu} visible={menuVisibility} />
+          {menu === "overview" && <Overview toiletInfo={toiletInfo} reviews={reviews} />}
+          {menu === "reviews" && (
+            <>
+              <h1 className="mb-2 truncate text-wrap text-3xl font-bold">{toiletInfo?.name} Reviews</h1>
+              <button className="btn btn-outline btn-sm" onClick={handleOpenReviewModal}>
+                Add Review
+              </button>
+            </>
+          )}
+          {menu === "others" && (
+            <h1 className="mb-2 truncate text-wrap text-3xl font-bold">Other Toilets in {toiletInfo?.building}</h1>
+          )}
+        </div>
+      </div>
+      <div className={`flex-1 space-y-4 overflow-y-auto overflow-x-hidden ${menu === "overview" && "hidden"}`}>
+        {menu === "reviews" && <Reviews reviews={reviews} />}
+        {menu === "others" && <OtherToilets toilets={toiletsInBuilding} />}
+      </div>
+      <ReviewModal />
+    </>
+  );
+};
+
 const ToiletReview = () => {
   // Toilet state
   const { toilet } = useDashboardToilet();
@@ -63,9 +116,6 @@ const ToiletReview = () => {
   // Menu state
   const [menu, setMenu] = useState("overview");
   const [menuVisibility, setMenuVisibility] = useState(!!toilet);
-
-  // Review Modal state
-  const [showReviewModal, setShowReviewModal] = useState(false);
 
   // Show the toilet review when the toilet is set and hide it when the toilet is unset
   useEffect(() => {
@@ -107,33 +157,17 @@ const ToiletReview = () => {
     <div
       className={`flex max-h-[80vh] flex-col space-y-4 transition-all duration-500 ${toilet ? "w-[30%]" : "w-0 opacity-0"}`}
     >
-      <div className={`w-full overflow-y-auto rounded-3xl bg-base-300 p-5 ${menu === "overview" && "h-full"}`}>
-        <div className={`flex flex-col ${!toiletInfo && "hidden"} `}>
-          <Menu menu={menu} setMenu={setMenu} visible={menuVisibility} />
-          {menu === "overview" && <Overview toiletInfo={toiletInfo} reviews={reviews} />}
-          {menu === "reviews" && (
-            <>
-              <h1 className="mb-2 truncate text-wrap text-3xl font-bold">{toiletInfo?.name} Reviews</h1>
-              <button className="btn btn-outline btn-sm" onClick={() => showModal("review_modal", setShowReviewModal)}>
-                Add Review
-              </button>
-            </>
-          )}
-          {menu === "others" && (
-            <h1 className="mb-2 truncate text-wrap text-3xl font-bold">Other Toilets in {toiletInfo?.building}</h1>
-          )}
-        </div>
-      </div>
-      <div className={`flex-1 space-y-4 overflow-y-auto overflow-x-hidden ${menu === "overview" && "hidden"}`}>
-        {menu === "reviews" && <Reviews reviews={reviews} />}
-        {menu === "others" && <OtherToilets toilets={toiletsInBuilding} />}
-      </div>
-      <ReviewModal
-        open={showReviewModal}
-        setOpen={setShowReviewModal}
-        toiletID={toilet?.id ?? ""}
-        setReviews={setReviews}
-      />
+      <AddEditReviewContextProvider setReviews={setReviews}>
+        <ToiletReviewDisplay
+          toiletInfo={toiletInfo}
+          reviews={reviews}
+          toiletsInBuilding={toiletsInBuilding}
+          menu={menu}
+          setMenu={setMenu}
+          menuVisibility={menuVisibility}
+          setReviews={setReviews}
+        />
+      </AddEditReviewContextProvider>
     </div>
   );
 };

@@ -16,6 +16,12 @@ export const createReview = async (review: Omit<Review, "id">) => {
   await setDoc(reviewRef, { ...review, id: reviewID });
 };
 
+export const editCreatedReview = async (review: Review) => {
+  const reviewCollection = collection(db, "review");
+  const reviewRef = doc(reviewCollection, review.id);
+  await setDoc(reviewRef, review);
+};
+
 export const getReviewsForToilet = async (toiletID: string): Promise<Review[]> => {
   const reviewCollection = collection(db, "review");
   const reviewQuery = query(reviewCollection, where("toiletID", "==", toiletID));

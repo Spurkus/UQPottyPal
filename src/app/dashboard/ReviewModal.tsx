@@ -1,84 +1,36 @@
-import useInputValidator from "@/hooks/useInputValidator";
 import { InputAreaField, InputField } from "@/components/InputFields";
-import { closeModal, triggerConfetti } from "@/helper/helperFunctions";
-import { useMemo, useState } from "react";
-import { Review } from "@/types";
-import { createReview, getReviewsForToilet } from "@/helper/firestoreFunctions";
+import { useAddEditReview } from "@/contexts/AddEditReview";
 import Loading from "@/components/Loading";
 
-interface ReviewModalProps {
-  open: boolean;
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  toiletID: string;
-  setReviews: React.Dispatch<React.SetStateAction<Review[]>>;
-}
-
-const NAME_REGEX = /^[a-zA-Z\s]{1,30}$/;
-const COMMENT_REGEX = /^[\w\s\d.,!@#$%^&*()_+-=;:'"<>?/\\|[\]{}]{1,200}$/;
-
-const ReviewModal = ({ open, setOpen, toiletID, setReviews }: ReviewModalProps) => {
-  const nameValidator = (name: string) => NAME_REGEX.test(name);
-  const [name, setName, validName] = useInputValidator<string>("", nameValidator);
-
-  const commentValidator = (comment: string) => COMMENT_REGEX.test(comment);
-  const [comment, setComment, validComment] = useInputValidator<string>("", commentValidator);
-
-  const statValidator = (stat: number) => stat >= 0 && stat <= 100;
-  const [privacy, setPrivacy, validPrivacy] = useInputValidator<number>(50, statValidator);
-  const [cleanliness, setCleanliness, validCleanliness] = useInputValidator<number>(50, statValidator);
-  const [accessibility, setAccessibility, validAccessibility] = useInputValidator<number>(50, statValidator);
-  const [vibe, setVibe, validVibe] = useInputValidator<number>(50, statValidator);
-
-  const ratingValidator = (rating: number) => rating >= 0 && rating <= 5;
-  const [rating, setRating, validRating] = useInputValidator<number>(3, ratingValidator);
-
-  const validForm = useMemo(
-    () =>
-      validName && validComment && validPrivacy && validCleanliness && validAccessibility && validVibe && validRating,
-    [validName, validComment, validPrivacy, validCleanliness, validAccessibility, validVibe, validRating],
-  );
-  const [submitting, setSubmitting] = useState<boolean>(false);
-
-  const handleClose = () => {
-    closeModal("review_modal", setOpen);
-    setComment("");
-    setName("");
-    setPrivacy(50);
-    setCleanliness(50);
-    setAccessibility(50);
-    setVibe(50);
-    setRating(3);
-  };
-
-  const handleSubmit = async () => {
-    if (!validForm) return;
-    setSubmitting(true);
-
-    const review: Omit<Review, "id"> = {
-      toiletID,
-      username: name,
-      comment,
-      rating,
-      privacy,
-      cleanliness,
-      accessibility,
-      vibe,
-      timestamp: Date.now(),
-    };
-
-    await createReview(review).then(async () => {
-      const reviews = await getReviewsForToilet(toiletID);
-      setReviews(reviews);
-      handleClose();
-      setSubmitting(false);
-      triggerConfetti();
-    });
-  };
-
+const ReviewModal = () => {
+  const {
+    visible,
+    submitting,
+    handleClose,
+    validForm,
+    handleSubmit,
+    name,
+    setName,
+    validName,
+    comment,
+    setComment,
+    validComment,
+    privacy,
+    setPrivacy,
+    cleanliness,
+    setCleanliness,
+    accessibility,
+    setAccessibility,
+    vibe,
+    setVibe,
+    rating,
+    setRating,
+    editReview,
+  } = useAddEditReview();
   return (
-    <dialog id="review_modal" className="modal" open={open}>
+    <dialog id="review_modal" className="modal" open={visible}>
       <div className="modal-box w-[96rem]">
-        <h1 className="text-center text-3xl font-bold">Create Review</h1>
+        <h1 className="text-center text-3xl font-bold">{editReview ? "Edit" : "Create"} Review</h1>
         {submitting ? (
           <div className="my-12 flex justify-center">
             <Loading />
@@ -161,7 +113,7 @@ const ReviewModal = ({ open, setOpen, toiletID, setReviews }: ReviewModalProps) 
             </div>
             <div className="modal-action justify-center space-x-24">
               <button className={`btn btn-success ${!validForm && "btn-disabled"}`} onClick={handleSubmit}>
-                Submit
+                {editReview ? "Edit Review" : "Submit"}
               </button>
               <button className="btn" onClick={handleClose}>
                 Close

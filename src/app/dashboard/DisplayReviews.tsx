@@ -1,3 +1,5 @@
+import { useAddEditReview } from "@/contexts/AddEditReview";
+import { showModal } from "@/helper/helperFunctions";
 import { Review } from "@/types";
 
 interface ReviewsProps {
@@ -9,6 +11,11 @@ interface ReviewProps {
 }
 
 const ReviewComponent = ({ review }: ReviewProps) => {
+  const { setVisible, setDefaultValues, setEditReview } = useAddEditReview();
+  const handleEdit = () => {
+    setEditReview(review);
+    showModal("review_modal", setVisible);
+  };
   return (
     <div className="collapse rounded-3xl bg-base-300">
       <input type="checkbox" />
@@ -39,6 +46,12 @@ const ReviewComponent = ({ review }: ReviewProps) => {
         <progress className="progress progress-success" value={review.accessibility} max="100" />
         <h4 className="mt-1.5 font-bold leading-3">Vibe</h4>
         <progress className="progress progress-info" value={review.vibe} max="100" />
+        <div className="mt-2 flex flex-row justify-between">
+          <button className="btn btn-outline btn-success btn-sm" onClick={handleEdit}>
+            Edit
+          </button>
+          <button className="btn btn-outline btn-error btn-sm">Delete</button>
+        </div>
       </div>
     </div>
   );
