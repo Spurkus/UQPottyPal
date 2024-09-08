@@ -148,7 +148,7 @@ const ReviewModal = ({ open, setOpen, toiletID }: ReviewModalProps) => {
                   <input
                     key={index}
                     type="radio"
-                    name="rating-10"
+                    name="rating-review"
                     className={`mask mask-star-2 bg-orange-400 ${index % 2 === 0 ? "mask-half-1" : "mask-half-2"}`}
                     onChange={() => setRating((index + 1) / 2)}
                     checked={rating === (index + 1) / 2}

@@ -1,5 +1,9 @@
 import { Review } from "@/types";
 
+interface ReviewsProps {
+  reviews: Review[];
+}
+
 interface ReviewProps {
   review: Review;
 }
@@ -40,4 +44,16 @@ const ReviewComponent = ({ review }: ReviewProps) => {
   );
 };
 
-export default ReviewComponent;
+const Reviews = ({ reviews }: ReviewsProps) => {
+  return (
+    <>
+      {reviews
+        .sort((a, b) => b.timestamp - a.timestamp)
+        .map((review) => (
+          <ReviewComponent key={review.id} review={review} />
+        ))}
+    </>
+  );
+};
+
+export default Reviews;

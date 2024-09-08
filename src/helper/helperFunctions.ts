@@ -1,4 +1,4 @@
-import { Toilet, GeoToilet, GeoToilets } from "@/types";
+import { Toilet, GeoToilet, GeoToilets, Review } from "@/types";
 import { GeoPoint } from "firebase/firestore";
 import { SetStateAction } from "react";
 import confetti from "canvas-confetti";
@@ -71,4 +71,10 @@ export const triggerConfetti = () => {
     particleCount: 20,
     scalar: 0.75,
   });
+};
+
+export const calculateAverageReviewStat = (reviews: Review[], key: keyof Review) => {
+  if (!reviews) return 0;
+  const average = reviews.reduce((acc, review) => acc + +review[key], 0) / reviews.length;
+  return Math.round(average * 2) / 2; // Round to the nearest 0.5
 };
