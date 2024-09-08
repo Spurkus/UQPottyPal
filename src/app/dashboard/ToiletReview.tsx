@@ -1,11 +1,12 @@
 import { useDashboardToilet } from "@/contexts/DashboardToilet";
 import { capitaliseFirstLetter, showModal } from "@/helper/helperFunctions";
-import { Review } from "@/types";
+import { Review, Toilet } from "@/types";
 import { useState, useEffect } from "react";
 import ReviewModal from "./ReviewModal";
 import Reviews from "./DisplayReviews";
 import Overview from "./Overview";
-import { getReviewsForToilet } from "@/helper/firestoreFunctions";
+import OtherToilets from "./OtherToilets";
+import { getReviewsForToilet, getToiletsInBuilding } from "@/helper/firestoreFunctions";
 
 interface MenuProps {
   menu: string;
@@ -38,7 +39,7 @@ const MenuButton = ({
 };
 
 const Menu = ({ menu, setMenu, visible }: MenuProps) => {
-  const menuItems = ["overview", "reviews", "floors"];
+  const menuItems = ["overview", "reviews", "others"];
   return (
     <div className={`join mb-3 w-full justify-center ${!visible && "hidden"}`}>
       {menuItems.map((item) => (
@@ -56,6 +57,9 @@ const ToiletReview = () => {
   // Review state for the toilet
   const [reviews, setReviews] = useState<Review[]>([]);
 
+  // Toilets in buildings
+  const [toiletsInBuilding, setToiletsInBuilding] = useState<Toilet[]>([]);
+
   // Menu state
   const [menu, setMenu] = useState("overview");
   const [menuVisibility, setMenuVisibility] = useState(!!toilet);
@@ -67,11 +71,13 @@ const ToiletReview = () => {
   useEffect(() => {
     if (toilet) {
       // Get the reviews for the toilet
-      const fetchReviews = async () => {
+      const fetchReviewsAndToiletsInBuilding = async () => {
         const reviews = await getReviewsForToilet(toilet?.id ?? "");
         setReviews(reviews);
+        const toilets = await getToiletsInBuilding(toilet?.building ?? "");
+        setToiletsInBuilding(toilets);
       };
-      fetchReviews();
+      fetchReviewsAndToiletsInBuilding();
 
       // Accounts for the delay in showing the toilet review
       const menuVisibilityTimeout = setTimeout(() => setMenuVisibility(true), 150);
@@ -113,10 +119,14 @@ const ToiletReview = () => {
               </button>
             </>
           )}
+          {menu === "others" && (
+            <h1 className="mb-2 truncate text-wrap text-3xl font-bold">Other Toilets in {toiletInfo?.building}</h1>
+          )}
         </div>
       </div>
-      <div className={`flex-1 space-y-4 overflow-y-auto ${menu === "overview" && "hidden"}`}>
+      <div className={`flex-1 space-y-4 overflow-y-auto overflow-x-hidden ${menu === "overview" && "hidden"}`}>
         {menu === "reviews" && <Reviews reviews={reviews} />}
+        {menu === "others" && <OtherToilets toilets={toiletsInBuilding} />}
       </div>
       <ReviewModal open={showReviewModal} setOpen={setShowReviewModal} toiletID={toilet?.id ?? ""} />
     </div>

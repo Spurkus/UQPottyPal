@@ -18,6 +18,7 @@ export interface DashboardToiletType {
   zoom: number;
   setZoom: React.Dispatch<React.SetStateAction<number>>;
   moveZoomTo: (newZoom: number) => void;
+  moveTo: (lat: number, lng: number, zoom?: number) => void;
   toilet: Toilet | null;
   setToilet: React.Dispatch<React.SetStateAction<Toilet | null>>;
 }
@@ -100,6 +101,7 @@ export const DashboardToiletContextProvider = ({ children }: { children: React.R
     // Click toilet marker to view details
     map.current.on("click", "toilets-layer", (event) => {
       const feature = event.features![0];
+      console.log(feature);
       const coordinates = (feature.geometry as GeoJSON.Point).coordinates;
       const properties = feature.properties;
 
@@ -129,6 +131,7 @@ export const DashboardToiletContextProvider = ({ children }: { children: React.R
         zoom,
         setZoom,
         moveZoomTo,
+        moveTo,
         toilet,
         setToilet,
       }}

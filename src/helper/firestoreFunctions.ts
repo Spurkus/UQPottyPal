@@ -22,3 +22,10 @@ export const getReviewsForToilet = async (toiletID: string): Promise<Review[]> =
   const reviewSnapshot = await getDocs(reviewQuery);
   return reviewSnapshot.docs.map((doc) => doc.data()) as Review[];
 };
+
+export const getToiletsInBuilding = async (building: string): Promise<Toilet[]> => {
+  const toiletCollection = collection(db, "toilet");
+  const toiletQuery = query(toiletCollection, where("building", "==", building));
+  const toiletSnapshot = await getDocs(toiletQuery);
+  return toiletSnapshot.docs.map((doc) => doc.data()) as Toilet[];
+};
