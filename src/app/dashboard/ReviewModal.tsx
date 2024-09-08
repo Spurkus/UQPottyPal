@@ -66,11 +66,9 @@ const ReviewModal = ({ open, setOpen, toiletID }: ReviewModalProps) => {
     };
 
     await createReview(review).then(() => {
-      setTimeout(() => {
-        handleClose();
-        setSubmitting(false);
-        triggerConfetti();
-      }, 1000);
+      handleClose();
+      setSubmitting(false);
+      triggerConfetti();
     });
   };
 

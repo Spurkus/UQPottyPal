@@ -3,6 +3,7 @@ import { capitaliseFirstLetter, showModal } from "@/helper/helperFunctions";
 import { Toilet } from "@/types";
 import { useState, useEffect } from "react";
 import ReviewModal from "./ReviewModal";
+import Reviews from "./display-review/Reviews";
 
 interface MenuProps {
   menu: string;
@@ -86,51 +87,6 @@ const Overview = ({ toiletInfo }: OverviewProps) => {
   );
 };
 
-const Review = () => {
-  return (
-    <div className="collapse rounded-3xl bg-base-300">
-      <input type="checkbox" />
-      <div className="collapse-title p-5">
-        <div className="flex flex-row justify-between">
-          <span className="font-semibold text-gray-500">MockUser</span>
-          <div className="btn-disabled rating rating-sm mb-1 self-end">
-            <input type="radio" name="rating-7" className="mask mask-star-2 bg-orange-400" />
-            <input type="radio" name="rating-7" className="mask mask-star-2 bg-orange-400" />
-            <input type="radio" name="rating-7" className="mask mask-star-2 bg-orange-400" />
-            <input type="radio" name="rating-7" className="mask mask-star-2 bg-orange-400" defaultChecked />
-            <input type="radio" name="rating-7" className="mask mask-star-2 bg-orange-400" />
-          </div>
-        </div>
-        <p className="text-wrap">
-          This is a review of the toilet. It was a great experience. Although it was incredibly smelly but that is to be
-          expected for a public toilet. The cleanliness was top-notch. The accessibility was great. The vibe was a bit
-          off but oh well.
-        </p>
-      </div>
-      <div className="collapse-content px-5">
-        <h4 className="font-bold leading-3">Privacy</h4>
-        <progress className="progress progress-secondary" value="40" max="100" />
-        <h4 className="mt-1.5 font-bold leading-3">Cleanliness</h4>
-        <progress className="progress progress-accent" value="80" max="100" />
-        <h4 className="mt-1.5 font-bold leading-3">Accessibility</h4>
-        <progress className="progress progress-success" value="60" max="100" />
-        <h4 className="mt-1.5 font-bold leading-3">Vibe</h4>
-        <progress className="progress progress-info" value="20" max="100" />
-      </div>
-    </div>
-  );
-};
-
-const Reviews = () => {
-  return (
-    <>
-      {Array.from({ length: 5 }).map((_, index) => (
-        <Review key={index} />
-      ))}
-    </>
-  );
-};
-
 const ToiletReview = () => {
   // Toilet state
   const { toilet } = useDashboardToilet();
@@ -188,7 +144,7 @@ const ToiletReview = () => {
         </div>
       </div>
       <div className={`flex-1 space-y-4 overflow-y-auto ${menu === "overview" && "hidden"}`}>
-        {menu === "reviews" && <Reviews />}
+        {menu === "reviews" && <Reviews toiletID={toilet?.id ?? ""} />}
       </div>
       <ReviewModal open={showReviewModal} setOpen={setShowReviewModal} toiletID={toilet?.id ?? ""} />
     </div>

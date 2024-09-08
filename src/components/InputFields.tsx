@@ -24,7 +24,7 @@ export const InputField = ({
       maxLength={valueMaxLength}
       className={`grow truncate rounded-lg border border-gray-400 p-1 pl-2.5 text-sm ${
         noInput && "input-disabled"
-      } ${value && "font-medium"} ${validValue || !value ? "bg-base-200" : "bg-input-error"}`}
+      } ${value && "font-medium"} ${validValue || !value ? "bg-base-200" : "bg-red-200"}`}
       disabled={noInput}
       id={type}
       autoComplete="off"
@@ -49,7 +49,7 @@ export const InputAreaField = ({
       style={{ height: `${height}px` }}
       placeholder={valuePlaceholder}
       maxLength={valueMaxLength}
-      className={`grow truncate rounded-lg border border-gray-400 p-1 pl-2.5 text-sm ${noInput && "input-disabled"} ${value && "font-medium"} ${validValue || !value ? "bg-base-200" : "bg-input-error"}`}
+      className={`grow truncate rounded-lg border border-gray-400 p-1 pl-2.5 text-sm ${noInput && "input-disabled"} ${value && "font-medium"} ${validValue || !value ? "bg-base-200" : "bg-red-200"}`}
       disabled={noInput}
       id={type}
       autoComplete="off"

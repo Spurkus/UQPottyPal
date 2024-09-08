@@ -70,7 +70,7 @@ export const DashboardToiletContextProvider = ({ children }: { children: React.R
 
     // Add toilet markers
     map.current.on("load", async () => {
-      const toilets = (await getAllToilets()) as Toilet[];
+      const toilets = await getAllToilets();
       map.current!.addSource("toilets", {
         type: "geojson",
         data: convertToiletsToGeoJSON(toilets),
