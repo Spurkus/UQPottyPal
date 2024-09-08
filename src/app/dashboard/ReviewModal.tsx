@@ -3,19 +3,20 @@ import { InputAreaField, InputField } from "@/components/InputFields";
 import { closeModal, triggerConfetti } from "@/helper/helperFunctions";
 import { useMemo, useState } from "react";
 import { Review } from "@/types";
-import { createReview } from "@/helper/firestoreFunctions";
+import { createReview, getReviewsForToilet } from "@/helper/firestoreFunctions";
 import Loading from "@/components/Loading";
 
 interface ReviewModalProps {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   toiletID: string;
+  setReviews: React.Dispatch<React.SetStateAction<Review[]>>;
 }
 
 const NAME_REGEX = /^[a-zA-Z\s]{1,30}$/;
 const COMMENT_REGEX = /^[\w\s\d.,!@#$%^&*()_+-=;:'"<>?/\\|[\]{}]{1,200}$/;
 
-const ReviewModal = ({ open, setOpen, toiletID }: ReviewModalProps) => {
+const ReviewModal = ({ open, setOpen, toiletID, setReviews }: ReviewModalProps) => {
   const nameValidator = (name: string) => NAME_REGEX.test(name);
   const [name, setName, validName] = useInputValidator<string>("", nameValidator);
 
@@ -65,7 +66,9 @@ const ReviewModal = ({ open, setOpen, toiletID }: ReviewModalProps) => {
       timestamp: Date.now(),
     };
 
-    await createReview(review).then(() => {
+    await createReview(review).then(async () => {
+      const reviews = await getReviewsForToilet(toiletID);
+      setReviews(reviews);
       handleClose();
       setSubmitting(false);
       triggerConfetti();

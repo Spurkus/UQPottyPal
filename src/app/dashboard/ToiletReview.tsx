@@ -128,7 +128,12 @@ const ToiletReview = () => {
         {menu === "reviews" && <Reviews reviews={reviews} />}
         {menu === "others" && <OtherToilets toilets={toiletsInBuilding} />}
       </div>
-      <ReviewModal open={showReviewModal} setOpen={setShowReviewModal} toiletID={toilet?.id ?? ""} />
+      <ReviewModal
+        open={showReviewModal}
+        setOpen={setShowReviewModal}
+        toiletID={toilet?.id ?? ""}
+        setReviews={setReviews}
+      />
     </div>
   );
 };
