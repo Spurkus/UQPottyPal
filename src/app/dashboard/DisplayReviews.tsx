@@ -60,7 +60,7 @@ const ReviewComponent = ({ review, setReviews }: ReviewProps) => {
     showModal("review_modal", setVisible);
   };
 
-  const handleDelete = () => {
+  const handleOpenDeleteModal = () => {
     showModal("delete_review_modal", setDeleteReviewModal);
   };
 
@@ -99,7 +99,7 @@ const ReviewComponent = ({ review, setReviews }: ReviewProps) => {
             <button className="btn btn-outline btn-success btn-sm" onClick={handleEdit}>
               Edit
             </button>
-            <button className="btn btn-outline btn-error btn-sm" onClick={handleDelete}>
+            <button className="btn btn-outline btn-error btn-sm" onClick={handleOpenDeleteModal}>
               Delete
             </button>
           </div>

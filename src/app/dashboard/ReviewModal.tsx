@@ -54,7 +54,7 @@ const ReviewModal = () => {
                 value={comment}
                 validValue={validComment}
                 valuePlaceholder="Write your review here"
-                valueMaxLength={200}
+                valueMaxLength={500}
                 noInput={false}
                 valueChange={(e) => setComment(e.target.value)}
                 height={100}

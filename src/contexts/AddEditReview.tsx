@@ -7,7 +7,7 @@ import { createReview, editCreatedReview, getReviewsForToilet } from "@/helper/f
 import { useDashboardToilet } from "./DashboardToilet";
 
 const NAME_REGEX = /^[a-zA-Z\s]{1,30}$/;
-const COMMENT_REGEX = /^[\w\s\d.,!@#$%^&*()_+-=;:'"<>?/\\|[\]{}]{1,200}$/;
+const COMMENT_REGEX = /^[\w\s\d.,!@#$%^&*()_+-=;:'"<>?/\\|[\]{}]{1,500}$/;
 
 export interface AddEditReviewType {
   visible: boolean;
