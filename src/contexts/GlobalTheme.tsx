@@ -31,7 +31,7 @@ export const GlobalThemeContextProvider = ({ children, initialTheme }: GlobalThe
   return (
     <GlobalTheme.Provider value={{ theme, setTheme, toggleTheme }}>
       <html lang="en" data-theme={theme}>
-        <body>{children}</body>
+        <body className="flex flex-col">{children}</body>
       </html>
     </GlobalTheme.Provider>
   );
