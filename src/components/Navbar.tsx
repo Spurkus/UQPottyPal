@@ -15,13 +15,8 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link href="/" className="btn-nav-link btn shadow-none">
+          <Link href="/toilets" className="btn-nav-link btn shadow-none">
             <span className="text-base">All Toilets</span>
-          </Link>
-        </li>
-        <li>
-          <Link href="/" className="btn-nav-link btn shadow-none">
-            <span className="text-base">About</span>
           </Link>
         </li>
         <li>

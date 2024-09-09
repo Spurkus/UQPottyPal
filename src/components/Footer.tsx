@@ -13,9 +13,6 @@ const Footer = () => {
         <Link href="/toilets" className="btn-nav-link btn btn-sm shadow-none">
           <span className="text-base font-medium">Toilets</span>
         </Link>
-        <Link href="/about" className="btn-nav-link btn btn-sm shadow-none">
-          <span className="text-base font-medium">About</span>
-        </Link>
       </nav>
       <aside className="mt-0 flex flex-col">
         <span>Not affiliated with UQ. Always check the official UQ maps for toilets.</span>

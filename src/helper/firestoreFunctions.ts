@@ -41,3 +41,10 @@ export const getToiletsInBuilding = async (building: string): Promise<Toilet[]> 
   const toiletSnapshot = await getDocs(toiletQuery);
   return toiletSnapshot.docs.map((doc) => doc.data()) as Toilet[];
 };
+
+export const getToilet = async (toiletID: string): Promise<Toilet> => {
+  const toiletCollection = collection(db, "toilet");
+  const toiletQuery = query(toiletCollection, where("id", "==", toiletID));
+  const toiletSnapshot = await getDocs(toiletQuery);
+  return toiletSnapshot.docs[0].data() as Toilet;
+};

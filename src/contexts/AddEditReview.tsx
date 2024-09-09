@@ -1,6 +1,6 @@
 "use client";
 import { useState, useMemo, createContext, useContext, useEffect, useCallback } from "react";
-import { Review } from "@/types";
+import { Review, Toilet } from "@/types";
 import { showModal, closeModal, triggerConfetti } from "@/helper/helperFunctions";
 import useInputValidator from "@/hooks/useInputValidator";
 import { createReview, editCreatedReview, getReviewsForToilet } from "@/helper/firestoreFunctions";
@@ -38,14 +38,14 @@ export interface AddEditReviewType {
 }
 
 export interface AddEditReviewProps {
+  toilet: Toilet;
   setReviews: React.Dispatch<React.SetStateAction<Review[]>>;
   children: React.ReactNode;
 }
 
 export const AddEditReview = createContext<AddEditReviewType | null>(null);
 
-export const AddEditReviewContextProvider = ({ setReviews, children }: AddEditReviewProps) => {
-  const { toilet } = useDashboardToilet();
+export const AddEditReviewContextProvider = ({ toilet, setReviews, children }: AddEditReviewProps) => {
   const [visible, setVisible] = useState<boolean>(false);
 
   const [editReview, setEditReview] = useState<Review | null>(null);

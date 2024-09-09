@@ -2,10 +2,10 @@ import { useDashboardToilet } from "@/contexts/DashboardToilet";
 import { capitaliseFirstLetter, showModal } from "@/helper/helperFunctions";
 import { Review, Toilet } from "@/types";
 import { useState, useEffect } from "react";
-import ReviewModal from "./ReviewModal";
-import Reviews from "./DisplayReviews";
-import Overview from "./Overview";
-import OtherToilets from "./OtherToilets";
+import ReviewModal from "@/components/toilet-data/ReviewModal";
+import Reviews from "@/components/toilet-data/DisplayReviews";
+import Overview from "@/components/toilet-data/ToiletOverview";
+import OtherToilets from "@/components/toilet-data/OtherToilets";
 import { getReviewsForToilet, getToiletsInBuilding } from "@/helper/firestoreFunctions";
 import { AddEditReviewContextProvider, useAddEditReview } from "@/contexts/AddEditReview";
 
@@ -157,7 +157,7 @@ const ToiletReview = () => {
     <div
       className={`flex max-h-[80vh] flex-col space-y-4 transition-all duration-500 ${toilet ? "w-[30%]" : "w-0 opacity-0"}`}
     >
-      <AddEditReviewContextProvider setReviews={setReviews}>
+      <AddEditReviewContextProvider toilet={toilet!} setReviews={setReviews}>
         <ToiletReviewDisplay
           toiletInfo={toiletInfo}
           reviews={reviews}
