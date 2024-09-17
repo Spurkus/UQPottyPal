@@ -1,14 +1,16 @@
+"use client";
 import TextStyle from "@tiptap/extension-text-style";
 import { Editor, EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import "./TextEditorStyle.css";
 
 interface MenuBarProps {
-  editor: Editor;
+  editor: Editor | null; // Editor can be null initially
 }
 
 const MenuBar = ({ editor }: MenuBarProps) => {
-  if (!editor) return;
+  if (!editor) return null;
+
   return (
     <div className="mb-2 flex flex-wrap gap-2">
       <button
@@ -152,7 +154,12 @@ const extensions = [
 const content = `<p>Default description</p>`;
 
 const TextEditor = () => {
-  const editor = useEditor({ extensions: extensions, content: content });
+  const editor = useEditor({
+    extensions: extensions,
+    content: content,
+    immediatelyRender: false,
+  });
+
   return (
     <div className="editor-container">
       <MenuBar editor={editor} />
