@@ -1,4 +1,4 @@
-import { useDashboardToilet } from "@/contexts/DashboardToilet";
+import { useMap } from "@/contexts/MapContext";
 import { capitaliseFirstLetter, showModal } from "@/helper/helperFunctions";
 import { Review, Toilet } from "@/types";
 import { useState, useEffect } from "react";
@@ -104,7 +104,7 @@ const ToiletReviewDisplay = ({
 
 const ToiletReview = () => {
   // Toilet state
-  const { toilet } = useDashboardToilet();
+  const { toilet } = useMap();
   const [toiletInfo, setToiletInfo] = useState(toilet);
 
   // Review state for the toilet

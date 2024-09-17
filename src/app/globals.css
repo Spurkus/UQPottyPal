@@ -9,5 +9,61 @@
 }
 
 body {
-  font-family: 'Satoshi', sans-serif;
+  font-family: "Satoshi", sans-serif;
 }
+
+h1 {
+  @apply mb-4 text-4xl font-bold;
+}
+
+h2 {
+  @apply mb-3 text-3xl font-semibold;
+}
+
+h3 {
+  @apply mb-2 text-2xl font-medium;
+}
+
+h4 {
+  @apply mb-2 text-xl font-medium;
+}
+
+h5 {
+  @apply mb-1.5 text-lg font-medium;
+}
+
+h6 {
+  @apply mb-1 text-base font-medium;
+}
+
+ul {
+  @apply mb-4 list-disc pl-6;
+}
+
+ul li {
+  @apply mb-2;
+}
+
+/* Ordered List */
+ol {
+  @apply mb-4 list-decimal pl-6;
+}
+
+ol li {
+  @apply mb-2;
+}
+
+/* Code Block */
+pre {
+  @apply mb-4 overflow-x-auto rounded-md bg-gray-800 p-4 text-white;
+}
+
+code {
+  @apply rounded-md bg-gray-200 p-1 text-gray-800;
+}
+
+/* Inline Code */
+.inline-code {
+  @apply rounded-md bg-gray-200 p-1 text-gray-800;
+}
+

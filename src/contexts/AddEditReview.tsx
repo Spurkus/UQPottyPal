@@ -1,10 +1,9 @@
 "use client";
 import { useState, useMemo, createContext, useContext, useEffect, useCallback } from "react";
 import { Review, Toilet } from "@/types";
-import { showModal, closeModal, triggerConfetti } from "@/helper/helperFunctions";
+import { closeModal, triggerConfetti } from "@/helper/helperFunctions";
 import useInputValidator from "@/hooks/useInputValidator";
 import { createReview, editCreatedReview, getReviewsForToilet } from "@/helper/firestoreFunctions";
-import { useDashboardToilet } from "./DashboardToilet";
 
 const NAME_REGEX = /^[a-zA-Z\s]{1,30}$/;
 const COMMENT_REGEX = /^[\w\s\d.,!@#$%^&*()_+-=;:'"<>?/\\|[\]{}]{1,500}$/;

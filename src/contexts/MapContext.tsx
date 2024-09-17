@@ -8,7 +8,7 @@ import { Toilet } from "@/types";
 
 const INITIAL_COORDINATES = { lng: 153.01301, lat: -27.49748, zoom: 16 };
 
-export interface DashboardToiletType {
+export interface MapType {
   mapContainer: React.MutableRefObject<HTMLDivElement | null>;
   map: React.MutableRefObject<mapboxgl.Map | null>;
   lng: number;
@@ -21,17 +21,20 @@ export interface DashboardToiletType {
   moveTo: (lat: number, lng: number, zoom?: number) => void;
   toilet: Toilet | null;
   setToilet: React.Dispatch<React.SetStateAction<Toilet | null>>;
+  clickable: boolean;
+  setClickable: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const DashboardToilet = createContext<DashboardToiletType | null>(null);
+export const Map = createContext<MapType | null>(null);
 
-export const DashboardToiletContextProvider = ({ children }: { children: React.ReactNode }) => {
+export const MapContextProvider = ({ children }: { children: React.ReactNode }) => {
   const mapContainer = useRef<HTMLDivElement | null>(null);
   const map = useRef<mapboxgl.Map | null>(null);
   const [lng, setLng] = useMapControls(INITIAL_COORDINATES.lng, map.current, "lng");
   const [lat, setLat] = useMapControls(INITIAL_COORDINATES.lat, map.current, "lat");
   const [zoom, setZoom, moveZoomTo] = useMapControls(INITIAL_COORDINATES.zoom, map.current, "zoom");
   const [toilet, setToilet] = useState<Toilet | null>(null);
+  const [clickable, setClickable] = useState<boolean>(true);
 
   const moveTo = useCallback((lat: number, lng: number, zoom?: number) => {
     if (!map.current) return;
@@ -100,6 +103,7 @@ export const DashboardToiletContextProvider = ({ children }: { children: React.R
 
     // Click toilet marker to view details
     map.current.on("click", "toilets-layer", (event) => {
+      if (!clickable) return;
       const feature = event.features![0];
       const coordinates = (feature.geometry as GeoJSON.Point).coordinates;
       const properties = feature.properties;
@@ -110,7 +114,7 @@ export const DashboardToiletContextProvider = ({ children }: { children: React.R
     });
 
     return () => map.current!.remove();
-  }, [setLng, setLat, setZoom]);
+  }, [setLng, setLat, setZoom, clickable]);
 
   useEffect(() => {
     if (!toilet) return;
@@ -119,7 +123,7 @@ export const DashboardToiletContextProvider = ({ children }: { children: React.R
   }, [toilet, moveTo, moveZoomTo]);
 
   return (
-    <DashboardToilet.Provider
+    <Map.Provider
       value={{
         mapContainer,
         map,
@@ -133,15 +137,17 @@ export const DashboardToiletContextProvider = ({ children }: { children: React.R
         moveTo,
         toilet,
         setToilet,
+        clickable,
+        setClickable,
       }}
     >
       {children}
-    </DashboardToilet.Provider>
+    </Map.Provider>
   );
 };
 
-export const useDashboardToilet = () => {
-  const context = useContext(DashboardToilet);
-  if (!context) throw new Error("useDashboardToilet must be used within a DashboardToiletProvider");
+export const useMap = () => {
+  const context = useContext(Map);
+  if (!context) throw new Error("useMap must be used within a MapContextProvider");
   return context;
 };

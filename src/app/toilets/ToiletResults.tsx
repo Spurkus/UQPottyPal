@@ -4,6 +4,9 @@ import { getAllToilets } from "@/helper/firestoreFunctions";
 import { Toilet } from "@/types";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import ToiletModal from "@/components/toilet-data/ToiletModal";
+import { showModal } from "@/helper/helperFunctions";
+import { MapContextProvider } from "@/contexts/MapContext";
 
 interface ToiletResultProps {
   toilet: Toilet;
@@ -29,6 +32,7 @@ const ToiletResult = ({ toilet }: ToiletResultProps) => {
 };
 
 const ToiletResults = () => {
+  const [createToilet, setCreateToilet] = useState<boolean>(false);
   const [results, setResults] = useState<Toilet[]>([]);
   const [search, setSearch] = useState<string>("");
 
@@ -43,7 +47,7 @@ const ToiletResults = () => {
 
   return (
     <>
-      <div className="flex h-10 flex-row justify-between space-x-4">
+      <div className="flex flex-row justify-between space-x-4">
         <InputField
           type="search"
           value={search}
@@ -53,6 +57,12 @@ const ToiletResults = () => {
           valueChange={(e) => setSearch(e.target.value)}
           validValue={true}
         />
+        <button
+          className="btn btn-warning btn-sm min-h-10 px-8"
+          onClick={() => showModal("toilet_modal", setCreateToilet)}
+        >
+          Create New Toilet!
+        </button>
       </div>
       <div className="mt-4 space-y-4">
         {results
@@ -61,6 +71,9 @@ const ToiletResults = () => {
             <ToiletResult key={toilet.id} toilet={toilet} />
           ))}
       </div>
+      <MapContextProvider>
+        <ToiletModal open={createToilet} setOpen={setCreateToilet} />
+      </MapContextProvider>
     </>
   );
 };

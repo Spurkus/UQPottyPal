@@ -9,6 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tiptap/extension-color": "^2.7.0",
+    "@tiptap/pm": "^2.7.0",
+    "@tiptap/react": "^2.7.0",
+    "@tiptap/starter-kit": "^2.7.0",
     "@types/mapbox-gl": "^3.4.0",
     "canvas-confetti": "^1.9.3",
     "firebase": "^10.13.1",

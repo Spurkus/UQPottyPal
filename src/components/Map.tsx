@@ -1,8 +1,16 @@
 "use client";
-import { useDashboardToilet } from "@/contexts/DashboardToilet";
+import { useMap } from "@/contexts/MapContext";
+import { useEffect } from "react";
 
-const Map = () => {
-  const { moveZoomTo, zoom, mapContainer, toilet } = useDashboardToilet();
+interface MapProps {
+  shrinks?: boolean;
+  middle?: boolean;
+}
+
+const Map = ({ shrinks, middle }: MapProps) => {
+  const { moveZoomTo, zoom, mapContainer, toilet, setClickable } = useMap();
+
+  useEffect(() => setClickable(!!shrinks), [shrinks, setClickable]);
 
   const ZoomButton = () => {
     const zoomIn = () => moveZoomTo(zoom + 1);
@@ -22,8 +30,9 @@ const Map = () => {
 
   return (
     <div
-      className={`relative flex flex-col rounded-3xl bg-base-300 p-5 transition-all duration-500 ${toilet ? "w-[70%]" : "w-full"}`}
+      className={`relative flex flex-col rounded-3xl bg-base-300 p-5 transition-all duration-500 ${shrinks && toilet ? "w-[70%]" : "w-full"}`}
     >
+      {middle && <div className="absolute right-[50%] top-[50%] z-50 h-2 w-2 rounded-3xl bg-red-600" />}
       <div ref={mapContainer} className="flex h-full w-full rounded-xl" />
       <ZoomButton />
     </div>

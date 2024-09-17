@@ -1,15 +1,15 @@
 "use client";
 import Map from "@/components/Map";
-import { DashboardToiletContextProvider } from "@/contexts/DashboardToilet";
 import ToiletReview from "./ToiletReview";
+import { MapContextProvider } from "@/contexts/MapContext";
 
 const Dashboard = () => {
   return (
     <div className="mx-12 flex h-[80vh] space-x-6">
-      <DashboardToiletContextProvider>
-        <Map />
+      <MapContextProvider>
+        <Map shrinks={true} />
         <ToiletReview />
-      </DashboardToiletContextProvider>
+      </MapContextProvider>
     </div>
   );
 };

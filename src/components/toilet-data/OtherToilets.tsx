@@ -1,4 +1,4 @@
-import { useDashboardToilet } from "@/contexts/DashboardToilet";
+import { useMap } from "@/contexts/MapContext";
 import { Toilet } from "@/types";
 
 interface OtherToiletProps {
@@ -10,7 +10,7 @@ interface OtherToiletsProps {
 }
 
 const OtherToilet = ({ otherToilet }: OtherToiletProps) => {
-  const { toilet, setToilet } = useDashboardToilet();
+  const { toilet, setToilet } = useMap();
   const sameToilet = toilet?.id === otherToilet.id;
   const handleClick = () => {
     if (sameToilet) return;
