@@ -43,7 +43,7 @@ const ToiletResults = () => {
 
   return (
     <>
-      <div className="flex flex-row justify-between space-x-4">
+      <div className="flex h-10 flex-row justify-between space-x-4">
         <InputField
           type="search"
           value={search}
@@ -53,12 +53,13 @@ const ToiletResults = () => {
           valueChange={(e) => setSearch(e.target.value)}
           validValue={true}
         />
-        <button className="btn btn-success btn-sm min-h-10 px-8">Search</button>
       </div>
       <div className="mt-4 space-y-4">
-        {results.map((toilet) => (
-          <ToiletResult key={toilet.id} toilet={toilet} />
-        ))}
+        {results
+          .filter((toilet) => toilet.name.toLowerCase().includes(search.toLowerCase()))
+          .map((toilet) => (
+            <ToiletResult key={toilet.id} toilet={toilet} />
+          ))}
       </div>
     </>
   );
