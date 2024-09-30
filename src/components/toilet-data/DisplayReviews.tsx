@@ -3,6 +3,7 @@ import { closeModal, showModal } from "@/helper/helperFunctions";
 import { useState } from "react";
 import { Review } from "@/types";
 import { deleteReview, getReviewsForToilet } from "@/helper/firestoreFunctions";
+import Loading from "../Loading";
 
 interface ReviewsProps {
   reviews: Review[];
@@ -22,30 +23,40 @@ interface DeleteReviewModalProps {
 }
 
 const DeleteReviewModal = ({ review, deleteReviewModal, setDeleteReviewModal, setReviews }: DeleteReviewModalProps) => {
+  const [loading, setLoading] = useState(false);
+
   const handleClose = () => {
     closeModal("delete_review_modal", setDeleteReviewModal);
   };
 
   const handleDelete = async () => {
+    setLoading(true);
     await deleteReview(review.id);
     handleClose();
     const reviews = await getReviewsForToilet(review.toiletID);
+    setLoading(false);
     setReviews(reviews);
   };
 
   return (
     <dialog className="modal" id="delete_review_modal" open={deleteReviewModal}>
       <div className="modal-box flex flex-col place-items-center">
-        <h1 className="mb-3 text-3xl font-bold">Delete Review</h1>
-        <p className="text-lg">Are you sure you want to delete this review?</p>
-        <div className="modal-action justify-center space-x-24">
-          <button className="btn btn-error" onClick={handleDelete}>
-            Delete
-          </button>
-          <button className="btn btn-neutral" onClick={handleClose}>
-            Cancel
-          </button>
-        </div>
+        {loading ? (
+          <Loading />
+        ) : (
+          <>
+            <h1 className="mb-3 text-3xl font-bold">Delete Review</h1>
+            <p className="text-lg">Are you sure you want to delete this review?</p>
+            <div className="modal-action justify-center space-x-24">
+              <button className="btn btn-error" onClick={handleDelete}>
+                Delete
+              </button>
+              <button className="btn btn-neutral" onClick={handleClose}>
+                Cancel
+              </button>
+            </div>
+          </>
+        )}
       </div>
     </dialog>
   );
