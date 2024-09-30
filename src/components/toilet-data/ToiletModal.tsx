@@ -28,7 +28,7 @@ const ToiletModal = ({ open, setOpen, toilet }: ToiletModalProps) => {
   const buildingNames = Object.values(buildingData).map((building) => building.name);
 
   const buildingValidator = useCallback(
-    (building: string) => buildingNames.some((name) => name.startsWith(building)),
+    (building: string) => buildingNames.some((name) => name.toLowerCase().startsWith(building.toLowerCase())),
     [buildingNames],
   );
   const [buildingName, setBuildingName, validBuildingName] = useInputValidator(

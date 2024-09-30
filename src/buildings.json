@@ -1,552 +1,553 @@
 {
-    "23": {
-        "name": "Abel Smith Lecture Theatre (23)",
-        "longitude": 153.01517584907526,
-        "latitude": -27.49644607903149
-    },
-    "49": {
-        "name": "Advanced Engineering Building (49)",
-        "longitude": 153.01520724389093,
-        "latitude": -27.499484172969556
-    },
-    "46": {
-        "name": "Andrew N. Liveris (46)",
-        "longitude": 153.0138170337327,
-        "latitude": -27.499072749969137
-    },
-    "56J": {
-        "name": "Archaeology Teaching and Research Centre (56J)",
-        "longitude": 153.01835484907522,
-        "latitude": -27.49683617857787
-    },
-    "40A": {
-        "name": "Athletics field shelter North (40A)",
-        "longitude": 153.01354603703288,
-        "latitude": -27.492759790644563
-    },
-    "75": {
-        "name": "Australian Institute for Bioengineering and Nanotechnology (75)",
-        "longitude": 153.01292963558217,
-        "latitude": -27.50057950234993
-    },
-    "47": {
-        "name": "Axon Building (47)",
-        "longitude": 153.01432934907524,
-        "latitude": -27.4999064017957
-    },
-    "94": {
-        "name": "Biological Sciences Library (94)",
-        "longitude": 153.01132926441784,
-        "latitude": -27.496547710474815
-    },
-    "89F": {
-        "name": "Boating and Diving Facility (89F)",
-        "longitude": 153.00924135772362,
-        "latitude": -27.494874329929388
-    },
-    "4": {
-        "name": "Bookshop (4)",
-        "longitude": 153.0144338364406,
-        "latitude": -27.497423263535097
-    },
-    "61A": {
-        "name": "Brian Wilson Chancellery (61A)",
-        "longitude": 153.011203267458,
-        "latitude": -27.49842508258215
-    },
-    "33": {
-        "name": "Building 33 (33)",
-        "longitude": 153.01648939432127,
-        "latitude": -27.496645625877946
-    },
-    "41": {
-        "name": "Building 41 (41)",
-        "longitude": 153.0146238246458,
-        "latitude": -27.49858210127195
-    },
-    "69": {
-        "name": "Building 69 (69)",
-        "longitude": 153.01255279140125,
-        "latitude": -27.498897449832715
-    },
-    "87": {
-        "name": "Building 87 (87)",
-        "longitude": 153.00991051349158,
-        "latitude": -27.496097213808167
-    },
-    "87A": {
-        "name": "Building 87A (87A)",
-        "longitude": 153.00966978465544,
-        "latitude": -27.4965010128844
-    },
-    "97": {
-        "name": "Building 97 (97)",
-        "longitude": 153.0097924134916,
-        "latitude": -27.49646652841831
-    },
-    "73": {
-        "name": "Campus Kindergarten (73)",
-        "longitude": 153.01251100000005,
-        "latitude": -27.501011186530828
-    },
-    "89E": {
-        "name": "Central Glasshouse Building (89E)",
-        "longitude": 153.01015581534452,
-        "latitude": -27.49519909397668
-    },
-    "12": {
-        "name": "Central Library (12)",
-        "longitude": 153.01360505892305,
-        "latitude": -27.496067604039254
-    },
-    "57": {
-        "name": "Centre for Advanced Imaging (57)",
-        "longitude": 153.01206348465547,
-        "latitude": -27.500106251325963
-    },
-    "35": {
-        "name": "Chamberlain Building (35)",
-        "longitude": 153.01451318465544,
-        "latitude": -27.495095757819623
-    },
-    "77A": {
-        "name": "Chancellors Place Bus Stop Shelter (77A)",
-        "longitude": 153.01104205767226,
-        "latitude": -27.497959173959526
-    },
-    "68": {
-        "name": "Chemistry Building (68)",
-        "longitude": 153.01300297790965,
-        "latitude": -27.499532558762898
-    },
-    "58C": {
-        "name": "CityCat Ferry Terminal (58C)",
-        "longitude": 153.01955293236938,
-        "latitude": -27.495911419945973
-    },
-    "39": {
-        "name": "Colin Clark Building (39)",
-        "longitude": 153.0141061,
-        "latitude": -27.494437358673526
-    },
-    "51A": {
-        "name": "Collaborative Design Laboratory (51A)",
-        "longitude": 153.01524251991503,
-        "latitude": -27.49903373316934
-    },
-    "99B": {
-        "name": "Community Garden BBQ Pavilion (99B)",
-        "longitude": 153.01141741349159,
-        "latitude": -27.49399343825085
-    },
-    "98D": {
-        "name": "Conifer Knoll Parking Station (98D)",
-        "longitude": 153.01814439999998,
-        "latitude": -27.49906916675127
-    },
-    "26": {
-        "name": "Connell Building (26)",
-        "longitude": 153.0154945269832,
-        "latitude": -27.495077642778238
-    },
-    "80B": {
-        "name": "CSIRO Car Park (80B)",
-        "longitude": 153.00923105767225,
-        "latitude": -27.49790511439831
-    },
-    "80A": {
-        "name": "CSIRO Controlled Environment Facility (80A)",
-        "longitude": 153.01008014062364,
-        "latitude": -27.497832876253828
-    },
-    "72": {
-        "name": "Cumbrae-Stewart Building (72)",
-        "longitude": 153.0117191,
-        "latitude": -27.499657684307255
-    },
-    "82L": {
-        "name": "Curtis Building (82L)",
-        "longitude": 153.01013241659228,
-        "latitude": -27.496798921819558
-    },
-    "27": {
-        "name": "David Theile Olympic Pool (27)",
-        "longitude": 153.0163511,
-        "latitude": -27.494908844585684
-    },
-    "74": {
-        "name": "Don Nicklin Building (74)",
-        "longitude": 153.01376002883612,
-        "latitude": -27.500374768223516
-    },
-    "53D": {
-        "name": "Drama Unit Marquee (53D)",
-        "longitude": 153.0195163202175,
-        "latitude": -27.4992896210186
-    },
-    "12A": {
-        "name": "Duhig Link (12A)",
-        "longitude": 153.01408043743288,
-        "latitude": -27.49628268384787
-    },
-    "2": {
-        "name": "Duhig Tower (2)",
-        "longitude": 153.01434837895948,
-        "latitude": -27.496549309002095
-    },
-    "30": {
-        "name": "Eric Freeman Boatshed (30)",
-        "longitude": 153.01298002395313,
-        "latitude": -27.491917287405474
-    },
-    "1": {
-        "name": "Forgan Smith Building (1)",
-        "longitude": 153.01309965767223,
-        "latitude": -27.496727628914925
-    },
-    "60": {
-        "name": "Gehrmann Laboratories (60)",
-        "longitude": 153.01207202698322,
-        "latitude": -27.49982033479756
-    },
-    "39A": {
-        "name": "General Purpose North 3 (39A)",
-        "longitude": 153.0134776,
-        "latitude": -27.49472592293356
-    },
-    "78": {
-        "name": "General Purpose South (78)",
-        "longitude": 153.01510478836136,
-        "latitude": -27.49993250086568
-    },
-    "20": {
-        "name": "Global Change Institute Building (20)",
-        "longitude": 153.0145362404748,
-        "latitude": -27.497404346212598
-    },
-    "8": {
-        "name": "Goddard Building (8)",
-        "longitude": 153.0120444865084,
-        "latitude": -27.498087082202264
-    },
-    "32": {
-        "name": "Gordon Greenwood Building (32)",
-        "longitude": 153.01542178465544,
-        "latitude": -27.49636966068305
-    },
-    "83": {
-        "name": "Hartley Teakle Building (83)",
-        "longitude": 153.01046992883613,
-        "latitude": -27.49549849264935
-    },
-    "50": {
-        "name": "Hawken Engineering Building (50)",
-        "longitude": 153.01349602872492,
-        "latitude": -27.49965717205195
-    },
-    "26B": {
-        "name": "Human Movement Studies Building (26B)",
-        "longitude": 153.01563117116388,
-        "latitude": -27.494844374272983
-    },
-    "26A": {
-        "name": "Human Performance Laboratories (26A)",
-        "longitude": 153.01584753289654,
-        "latitude": -27.495371729803374
-    },
-    "85": {
-        "name": "Industrial Centre (85)",
-        "longitude": 153.0088412514766,
-        "latitude": -27.497131410184103
-    },
-    "31B": {
-        "name": "Institute for Social Science Research Research Hub (31B)",
-        "longitude": 153.01529813291873,
-        "latitude": -27.495575287701733
-    },
-    "61": {
-        "name": "J.D. Story Administration Building (61)",
-        "longitude": 153.01155175767227,
-        "latitude": -27.498223581951347
-    },
-    "47A": {
-        "name": "Sir James Foots Building (47A)",
-        "longitude": 153.01418395767226,
-        "latitude": -27.50028888534419
-    },
-    "62": {
-        "name": "John Hines Building (62)",
-        "longitude": 153.01215660000003,
-        "latitude": -27.4985627658067
-    },
-    "37": {
-        "name": "Joyce Ackroyd Building (37)",
-        "longitude": 153.01472748650843,
-        "latitude": -27.49471919322992
-    },
-    "91A": {
-        "name": "Kev Carmody House (91A)",
-        "longitude": 153.00851128465547,
-        "latitude": -27.496788179593445
-    },
-    "17": {
-        "name": "Learning Innovation Building (17)",
-        "longitude": 153.01398348465548,
-        "latitude": -27.498083664978232
-    },
-    "14": {
-        "name": "Sir Llew Edwards Building (14)",
-        "longitude": 153.01389597757043,
-        "latitude": -27.495453406621696
-    },
-    "45": {
-        "name": "Mansergh Shaw Building (45)",
-        "longitude": 153.01438600000003,
-        "latitude": -27.499344233891946
-    },
-    "93D": {
-        "name": "Margaret Cribb Early Learning (93D)",
-        "longitude": 153.01012121534453,
-        "latitude": -27.494057992201046
-    },
-    "24A": {
-        "name": "McElwain Building (24A)",
-        "longitude": 153.01483005767224,
-        "latitude": -27.496003078303808
-    },
-    "9": {
-        "name": "Michie Building (9)",
-        "longitude": 153.0119116153445,
-        "latitude": -27.497128045567628
-    },
-    "11A": {
-        "name": "ModWest (11A)",
-        "longitude": 153.01232660185292,
-        "latitude": -27.49614006161752
-    },
-    "76": {
-        "name": "Molecular Biosciences (76)",
-        "longitude": 153.0100413597564,
-        "latitude": -27.498033913869047
-    },
-    "98A": {
-        "name": "Multi Level Carpark P3 (98A)",
-        "longitude": 153.01043147934618,
-        "latitude": -27.49485969764888
-    },
-    "98B": {
-        "name": "Multi Level Carpark P4 (98B)",
-        "longitude": 153.00979669803345,
-        "latitude": -27.4947792570223
-    },
-    "93C": {
-        "name": "Munro Childcare Centre (93C)",
-        "longitude": 153.0093154,
-        "latitude": -27.498519682688485
-    },
-    "81": {
-        "name": "Otto Hirschfeld Building (81)",
-        "longitude": 153.01060528465544,
-        "latitude": -27.49710891281504
-    },
-    "98C": {
-        "name": "Parking Station (98C)",
-        "longitude": 153.011614665612,
-        "latitude": -27.493237206643915
-    },
-    "7": {
-        "name": "Parnell Building (7)",
-        "longitude": 153.01314774907524,
-        "latitude": -27.49804689793709
-    },
-    "70A": {
-        "name": "Pavilion (Playing Field 1) (70A)",
-        "longitude": 153.01142482073936,
-        "latitude": -27.501342680567376
-    },
-    "92A": {
-        "name": "Pavilion (Playing Field 7) (92A)",
-        "longitude": 153.01289219602427,
-        "latitude": -27.49325632696239
-    },
-    "53C": {
-        "name": "Pavilion (Playing Fields 2 & 3) (53C)",
-        "longitude": 153.01906065097964,
-        "latitude": -27.499366904247147
-    },
-    "6": {
-        "name": "Physics Annexe (6)",
-        "longitude": 153.01361976441783,
-        "latitude": -27.498447749482786
-    },
-    "63": {
-        "name": "Physiology Lecture Theatres (63)",
-        "longitude": 153.01194539140397,
-        "latitude": -27.4986920492186
-    },
-    "93E": {
-        "name": "Playhouse Childcare Centre (93E)",
-        "longitude": 153.0095874673117,
-        "latitude": -27.493467874449085
-    },
-    "42": {
-        "name": "Prentice Building (incl. Prentice Centre) (42)",
-        "longitude": 153.0139069104455,
-        "latitude": -27.498678015935276
-    },
-    "67": {
-        "name": "Priestley Building (67)",
-        "longitude": 153.01299691191605,
-        "latitude": -27.498913338920257
-    },
-    "80": {
-        "name": "Queensland Bioscience Precinct (80)",
-        "longitude": 153.0098678220891,
-        "latitude": -27.498107715720185
-    },
-    "79": {
-        "name": "Queensland Brain Institute (79)",
-        "longitude": 153.011783808596,
-        "latitude": -27.499211233638956
-    },
-    "16": {
-        "name": "Radon Pavilion (16)",
-        "longitude": 153.0128103639823,
-        "latitude": -27.49827869276965
-    },
-    "5": {
-        "name": "Richards Building (5)",
-        "longitude": 153.01364622019432,
-        "latitude": -27.497800797431008
-    },
-    "64A": {
-        "name": "Ritchie Research Laboratories (64A)",
-        "longitude": 153.01100458195006,
-        "latitude": -27.4998736993138
-    },
-    "40": {
-        "name": "Rugby Clubhouse (40)",
-        "longitude": 153.01222044269366,
-        "latitude": -27.492956942054636
-    },
-    "22": {
-        "name": "Schonell Theatre (22)",
-        "longitude": 153.01591814907528,
-        "latitude": -27.496834997651987
-    },
-    "82A-M": {
-        "name": "Seddon Buildings (82A-M)",
-        "longitude": 153.01087693183783,
-        "latitude": -27.49662300725337
-    },
-    "65": {
-        "name": "Skerman Building (65)",
-        "longitude": 153.01157628465543,
-        "latitude": -27.49890204972168
-    },
-    "31A": {
-        "name": "Social Sciences Annexe (31A)",
-        "longitude": 153.01470328055174,
-        "latitude": -27.495819820422227
-    },
-    "24": {
-        "name": "Social Sciences Building (24)",
-        "longitude": 153.0147193778186,
-        "latitude": -27.495857911943283
-    },
-    "3": {
-        "name": "Steele Building (3)",
-        "longitude": 153.01483739501066,
-        "latitude": -27.49720931079578
-    },
-    "98E": {
-        "name": "Synthetic Playing Fields (98E)",
-        "longitude": 153.01695608286158,
-        "latitude": -27.497063862877294
-    },
-    "84A": {
-        "name": "Therapies Annexe (84A)",
-        "longitude": 153.01019956436707,
-        "latitude": -27.497329179643803
-    },
-    "84": {
-        "name": "Therapies Building (84)",
-        "longitude": 153.01023989703285,
-        "latitude": -27.497512204082508
-    },
-    "21A": {
-        "name": "Union Building (21A)",
-        "longitude": 153.01525783558216,
-        "latitude": -27.497054613698047
-    },
-    "11": {
-        "name": "UQ Art Museum (11)",
-        "longitude": 153.011991604332,
-        "latitude": -27.49648852465509
-    },
-    "27A": {
-        "name": "UQ Centre (27A)",
-        "longitude": 153.01525455204376,
-        "latitude": -27.497246042120718
-    },
-    "70B": {
-        "name": "UQ Cricket Club Pavilion (70B)",
-        "longitude": 153.01103846032,
-        "latitude": -27.501210043109477
-    },
-    "58A": {
-        "name": "UQ Lakes Bus Station (58A)",
-        "longitude": 153.0174269380426,
-        "latitude": -27.49778418690057
-    },
-    "38": {
-        "name": "UQ Multi-Faith Chaplaincy Centre (38)",
-        "longitude": 153.01517364907522,
-        "latitude": -27.495936178193926
-    },
-    "28B": {
-        "name": "UQ Sport Academy (28B)",
-        "longitude": 153.0155205517612,
-        "latitude": -27.494524648128507
-    },
-    "29A": {
-        "name": "UQ Sport Athletics Centre (29A)",
-        "longitude": 153.01214984898976,
-        "latitude": -27.493541137242538
-    },
-    "25": {
-        "name": "UQ Sport Fitness Centre (25)",
-        "longitude": 153.0155169718157,
-        "latitude": -27.49511771788329
-    },
-    "29": {
-        "name": "UQ Sport Tennis Centre (29)",
-        "longitude": 153.0151951067465,
-        "latitude": -27.49429925148762
-    },
-    "28": {
-        "name": "UQ Sport Tennis Pavilion (28)",
-        "longitude": 153.01530137661325,
-        "latitude": -27.49454771495378
-    },
-    "21A-D": {
-        "name": "UQ Union Complex (21A-D)",
-        "longitude": 153.0159807509247,
-        "latitude": -27.496296146384694
-    },
-    "99": {
-        "name": "Warehouse Building (99)",
-        "longitude": 153.00853147786816,
-        "latitude": -27.49439029511802
-    },
-    "64": {
-        "name": "Sir William MacGregor Building (64)",
-        "longitude": 153.01232721534456,
-        "latitude": -27.499230950190736
-    },
-    "51": {
-        "name": "Zelman Cowen Building (51)",
-        "longitude": 153.0146869,
-        "latitude": -27.49886633303896
-    }
+  "23": {
+    "name": "Abel Smith Lecture Theatre (23)",
+    "longitude": 153.01517584907526,
+    "latitude": -27.49644607903149
+  },
+  "49": {
+    "name": "Advanced Engineering Building (49)",
+    "longitude": 153.01520724389093,
+    "latitude": -27.499484172969556
+  },
+  "46": {
+    "name": "Andrew N. Liveris (46)",
+    "longitude": 153.0136442340077,
+    "latitude": -27.499325945388605
+  },
+  "56J": {
+    "name": "Archaeology Teaching and Research Centre (56J)",
+    "longitude": 153.01835484907522,
+    "latitude": -27.49683617857787
+  },
+  "40A": {
+    "name": "Athletics field shelter North (40A)",
+    "longitude": 153.01354603703288,
+    "latitude": -27.492759790644563
+  },
+  "75": {
+    "name": "Australian Institute for Bioengineering and Nanotechnology (75)",
+    "longitude": 153.01292963558217,
+    "latitude": -27.50057950234993
+  },
+  "47": {
+    "name": "Axon Building (47)",
+    "longitude": 153.01432934907524,
+    "latitude": -27.4999064017957
+  },
+  "94": {
+    "name": "Biological Sciences Library (94)",
+    "longitude": 153.01132926441784,
+    "latitude": -27.496547710474815
+  },
+  "89F": {
+    "name": "Boating and Diving Facility (89F)",
+    "longitude": 153.00924135772362,
+    "latitude": -27.494874329929388
+  },
+  "4": {
+    "name": "Bookshop (4)",
+    "longitude": 153.0144338364406,
+    "latitude": -27.497423263535097
+  },
+  "61A": {
+    "name": "Brian Wilson Chancellery (61A)",
+    "longitude": 153.011203267458,
+    "latitude": -27.49842508258215
+  },
+  "33": {
+    "name": "Building 33 (33)",
+    "longitude": 153.01648939432127,
+    "latitude": -27.496645625877946
+  },
+  "41": {
+    "name": "Building 41 (41)",
+    "longitude": 153.0146238246458,
+    "latitude": -27.49858210127195
+  },
+  "69": {
+    "name": "Building 69 (69)",
+    "longitude": 153.01255279140125,
+    "latitude": -27.498897449832715
+  },
+  "87": {
+    "name": "Building 87 (87)",
+    "longitude": 153.00991051349158,
+    "latitude": -27.496097213808167
+  },
+  "87A": {
+    "name": "Building 87A (87A)",
+    "longitude": 153.00966978465544,
+    "latitude": -27.4965010128844
+  },
+  "97": {
+    "name": "Building 97 (97)",
+    "longitude": 153.0097924134916,
+    "latitude": -27.49646652841831
+  },
+  "73": {
+    "name": "Campus Kindergarten (73)",
+    "longitude": 153.01251100000005,
+    "latitude": -27.501011186530828
+  },
+  "89E": {
+    "name": "Central Glasshouse Building (89E)",
+    "longitude": 153.01015581534452,
+    "latitude": -27.49519909397668
+  },
+  "12": {
+    "name": "Central Library (12)",
+    "longitude": 153.01360505892305,
+    "latitude": -27.496067604039254
+  },
+  "57": {
+    "name": "Centre for Advanced Imaging (57)",
+    "longitude": 153.01206348465547,
+    "latitude": -27.500106251325963
+  },
+  "35": {
+    "name": "Chamberlain Building (35)",
+    "longitude": 153.01451318465544,
+    "latitude": -27.495095757819623
+  },
+  "77A": {
+    "name": "Chancellors Place Bus Stop Shelter (77A)",
+    "longitude": 153.01104205767226,
+    "latitude": -27.497959173959526
+  },
+  "68": {
+    "name": "Chemistry Building (68)",
+    "longitude": 153.01300297790965,
+    "latitude": -27.499532558762898
+  },
+  "58C": {
+    "name": "CityCat Ferry Terminal (58C)",
+    "longitude": 153.01955293236938,
+    "latitude": -27.495911419945973
+  },
+  "39": {
+    "name": "Colin Clark Building (39)",
+    "longitude": 153.0141061,
+    "latitude": -27.494437358673526
+  },
+  "51A": {
+    "name": "Collaborative Design Laboratory (51A)",
+    "longitude": 153.01524251991503,
+    "latitude": -27.49903373316934
+  },
+  "99B": {
+    "name": "Community Garden BBQ Pavilion (99B)",
+    "longitude": 153.01141741349159,
+    "latitude": -27.49399343825085
+  },
+  "98D": {
+    "name": "Conifer Knoll Parking Station (98D)",
+    "longitude": 153.01814439999998,
+    "latitude": -27.49906916675127
+  },
+  "26": {
+    "name": "Connell Building (26)",
+    "longitude": 153.0154945269832,
+    "latitude": -27.495077642778238
+  },
+  "80B": {
+    "name": "CSIRO Car Park (80B)",
+    "longitude": 153.00923105767225,
+    "latitude": -27.49790511439831
+  },
+  "80A": {
+    "name": "CSIRO Controlled Environment Facility (80A)",
+    "longitude": 153.01008014062364,
+    "latitude": -27.497832876253828
+  },
+  "72": {
+    "name": "Cumbrae-Stewart Building (72)",
+    "longitude": 153.0117191,
+    "latitude": -27.499657684307255
+  },
+  "82L": {
+    "name": "Curtis Building (82L)",
+    "longitude": 153.01013241659228,
+    "latitude": -27.496798921819558
+  },
+  "27": {
+    "name": "David Theile Olympic Pool (27)",
+    "longitude": 153.0163511,
+    "latitude": -27.494908844585684
+  },
+  "74": {
+    "name": "Don Nicklin Building (74)",
+    "longitude": 153.01376002883612,
+    "latitude": -27.500374768223516
+  },
+  "53D": {
+    "name": "Drama Unit Marquee (53D)",
+    "longitude": 153.0195163202175,
+    "latitude": -27.4992896210186
+  },
+  "12A": {
+    "name": "Duhig Link (12A)",
+    "longitude": 153.01408043743288,
+    "latitude": -27.49628268384787
+  },
+  "2": {
+    "name": "Duhig Tower (2)",
+    "longitude": 153.01434837895948,
+    "latitude": -27.496549309002095
+  },
+  "30": {
+    "name": "Eric Freeman Boatshed (30)",
+    "longitude": 153.01298002395313,
+    "latitude": -27.491917287405474
+  },
+  "1": {
+    "name": "Forgan Smith Building (1)",
+    "longitude": 153.01309965767223,
+    "latitude": -27.496727628914925
+  },
+  "60": {
+    "name": "Gehrmann Laboratories (60)",
+    "longitude": 153.01207202698322,
+    "latitude": -27.49982033479756
+  },
+  "39A": {
+    "name": "General Purpose North 3 (39A)",
+    "longitude": 153.0134776,
+    "latitude": -27.49472592293356
+  },
+  "78": {
+    "name": "General Purpose South (78)",
+    "longitude": 153.01510478836136,
+    "latitude": -27.49993250086568
+  },
+  "20": {
+    "name": "Global Change Institute Building (20)",
+    "longitude": 153.0145362404748,
+    "latitude": -27.497404346212598
+  },
+  "8": {
+    "name": "Goddard Building (8)",
+    "longitude": 153.0120444865084,
+    "latitude": -27.498087082202264
+  },
+  "32": {
+    "name": "Gordon Greenwood Building (32)",
+    "longitude": 153.01542178465544,
+    "latitude": -27.49636966068305
+  },
+  "83": {
+    "name": "Hartley Teakle Building (83)",
+    "longitude": 153.01046992883613,
+    "latitude": -27.49549849264935
+  },
+  "50": {
+    "name": "Hawken Engineering Building (50)",
+    "longitude": 153.01349602872492,
+    "latitude": -27.49965717205195
+  },
+  "26B": {
+    "name": "Human Movement Studies Building (26B)",
+    "longitude": 153.01563117116388,
+    "latitude": -27.494844374272983
+  },
+  "26A": {
+    "name": "Human Performance Laboratories (26A)",
+    "longitude": 153.01584753289654,
+    "latitude": -27.495371729803374
+  },
+  "85": {
+    "name": "Industrial Centre (85)",
+    "longitude": 153.0088412514766,
+    "latitude": -27.497131410184103
+  },
+  "31B": {
+    "name": "Institute for Social Science Research Research Hub (31B)",
+    "longitude": 153.01529813291873,
+    "latitude": -27.495575287701733
+  },
+  "61": {
+    "name": "J.D. Story Administration Building (61)",
+    "longitude": 153.01155175767227,
+    "latitude": -27.498223581951347
+  },
+  "47A": {
+    "name": "Sir James Foots Building (47A)",
+    "longitude": 153.01418395767226,
+    "latitude": -27.50028888534419
+  },
+  "62": {
+    "name": "John Hines Building (62)",
+    "longitude": 153.01215660000003,
+    "latitude": -27.4985627658067
+  },
+  "37": {
+    "name": "Joyce Ackroyd Building (37)",
+    "longitude": 153.01472748650843,
+    "latitude": -27.49471919322992
+  },
+  "91A": {
+    "name": "Kev Carmody House (91A)",
+    "longitude": 153.00851128465547,
+    "latitude": -27.496788179593445
+  },
+  "17": {
+    "name": "Learning Innovation Building (17)",
+    "longitude": 153.01398348465548,
+    "latitude": -27.498083664978232
+  },
+  "14": {
+    "name": "Sir Llew Edwards Building (14)",
+    "longitude": 153.01389597757043,
+    "latitude": -27.495453406621696
+  },
+  "45": {
+    "name": "Mansergh Shaw Building (45)",
+    "longitude": 153.01438600000003,
+    "latitude": -27.499344233891946
+  },
+  "93D": {
+    "name": "Margaret Cribb Early Learning (93D)",
+    "longitude": 153.01012121534453,
+    "latitude": -27.494057992201046
+  },
+  "24A": {
+    "name": "McElwain Building (24A)",
+    "longitude": 153.01483005767224,
+    "latitude": -27.496003078303808
+  },
+  "9": {
+    "name": "Michie Building (9)",
+    "longitude": 153.0119116153445,
+    "latitude": -27.497128045567628
+  },
+  "11A": {
+    "name": "ModWest (11A)",
+    "longitude": 153.01232660185292,
+    "latitude": -27.49614006161752
+  },
+  "76": {
+    "name": "Molecular Biosciences (76)",
+    "longitude": 153.0100413597564,
+    "latitude": -27.498033913869047
+  },
+  "98A": {
+    "name": "Multi Level Carpark P3 (98A)",
+    "longitude": 153.01043147934618,
+    "latitude": -27.49485969764888
+  },
+  "98B": {
+    "name": "Multi Level Carpark P4 (98B)",
+    "longitude": 153.00979669803345,
+    "latitude": -27.4947792570223
+  },
+  "93C": {
+    "name": "Munro Childcare Centre (93C)",
+    "longitude": 153.0093154,
+    "latitude": -27.498519682688485
+  },
+  "81": {
+    "name": "Otto Hirschfeld Building (81)",
+    "longitude": 153.01060528465544,
+    "latitude": -27.49710891281504
+  },
+  "98C": {
+    "name": "Parking Station (98C)",
+    "longitude": 153.011614665612,
+    "latitude": -27.493237206643915
+  },
+  "7": {
+    "name": "Parnell Building (7)",
+    "longitude": 153.01314774907524,
+    "latitude": -27.49804689793709
+  },
+  "70A": {
+    "name": "Pavilion (Playing Field 1) (70A)",
+    "longitude": 153.01142482073936,
+    "latitude": -27.501342680567376
+  },
+  "92A": {
+    "name": "Pavilion (Playing Field 7) (92A)",
+    "longitude": 153.01289219602427,
+    "latitude": -27.49325632696239
+  },
+  "53C": {
+    "name": "Pavilion (Playing Fields 2 & 3) (53C)",
+    "longitude": 153.01906065097964,
+    "latitude": -27.499366904247147
+  },
+  "6": {
+    "name": "Physics Annexe (6)",
+    "longitude": 153.01361976441783,
+    "latitude": -27.498447749482786
+  },
+  "63": {
+    "name": "Physiology Lecture Theatres (63)",
+    "longitude": 153.01194539140397,
+    "latitude": -27.4986920492186
+  },
+  "93E": {
+    "name": "Playhouse Childcare Centre (93E)",
+    "longitude": 153.0095874673117,
+    "latitude": -27.493467874449085
+  },
+  "42": {
+    "name": "Prentice Building (incl. Prentice Centre) (42)",
+    "longitude": 153.0139069104455,
+    "latitude": -27.498678015935276
+  },
+  "67": {
+    "name": "Priestley Building (67)",
+    "longitude": 153.01299691191605,
+    "latitude": -27.498913338920257
+  },
+  "80": {
+    "name": "Queensland Bioscience Precinct (80)",
+    "longitude": 153.0098678220891,
+    "latitude": -27.498107715720185
+  },
+  "79": {
+    "name": "Queensland Brain Institute (79)",
+    "longitude": 153.011783808596,
+    "latitude": -27.499211233638956
+  },
+  "16": {
+    "name": "Radon Pavilion (16)",
+    "longitude": 153.0128103639823,
+    "latitude": -27.49827869276965
+  },
+  "5": {
+    "name": "Richards Building (5)",
+    "longitude": 153.01364622019432,
+    "latitude": -27.497800797431008
+  },
+  "64A": {
+    "name": "Ritchie Research Laboratories (64A)",
+    "longitude": 153.01100458195006,
+    "latitude": -27.4998736993138
+  },
+  "40": {
+    "name": "Rugby Clubhouse (40)",
+    "longitude": 153.01222044269366,
+    "latitude": -27.492956942054636
+  },
+  "22": {
+    "name": "Schonell Theatre (22)",
+    "longitude": 153.01591814907528,
+    "latitude": -27.496834997651987
+  },
+  "82A-M": {
+    "name": "Seddon Buildings (82A-M)",
+    "longitude": 153.01087693183783,
+    "latitude": -27.49662300725337
+  },
+  "65": {
+    "name": "Skerman Building (65)",
+    "longitude": 153.01157628465543,
+    "latitude": -27.49890204972168
+  },
+  "31A": {
+    "name": "Social Sciences Annexe (31A)",
+    "longitude": 153.01470328055174,
+    "latitude": -27.495819820422227
+  },
+  "24": {
+    "name": "Social Sciences Building (24)",
+    "longitude": 153.0147193778186,
+    "latitude": -27.495857911943283
+  },
+  "3": {
+    "name": "Steele Building (3)",
+    "longitude": 153.01483739501066,
+    "latitude": -27.49720931079578
+  },
+  "98E": {
+    "name": "Synthetic Playing Fields (98E)",
+    "longitude": 153.01695608286158,
+    "latitude": -27.497063862877294
+  },
+  "84A": {
+    "name": "Therapies Annexe (84A)",
+    "longitude": 153.01019956436707,
+    "latitude": -27.497329179643803
+  },
+  "84": {
+    "name": "Therapies Building (84)",
+    "longitude": 153.01023989703285,
+    "latitude": -27.497512204082508
+  },
+  "21A": {
+    "name": "Union Building (21A)",
+    "longitude": 153.01525783558216,
+    "latitude": -27.497054613698047
+  },
+  "11": {
+    "name": "UQ Art Museum (11)",
+    "longitude": 153.011991604332,
+    "latitude": -27.49648852465509
+  },
+  "27A": {
+    "name": "UQ Centre (27A)",
+    "longitude": 153.01525455204376,
+    "latitude": -27.497246042120718
+  },
+  "70B": {
+    "name": "UQ Cricket Club Pavilion (70B)",
+    "longitude": 153.01103846032,
+    "latitude": -27.501210043109477
+  },
+  "58A": {
+    "name": "UQ Lakes Bus Station (58A)",
+    "longitude": 153.0174269380426,
+    "latitude": -27.49778418690057
+  },
+  "38": {
+    "name": "UQ Multi-Faith Chaplaincy Centre (38)",
+    "longitude": 153.01517364907522,
+    "latitude": -27.495936178193926
+  },
+  "28B": {
+    "name": "UQ Sport Academy (28B)",
+    "longitude": 153.0155205517612,
+    "latitude": -27.494524648128507
+  },
+  "29A": {
+    "name": "UQ Sport Athletics Centre (29A)",
+    "longitude": 153.01214984898976,
+    "latitude": -27.493541137242538
+  },
+  "25": {
+    "name": "UQ Sport Fitness Centre (25)",
+    "longitude": 153.0155169718157,
+    "latitude": -27.49511771788329
+  },
+  "29": {
+    "name": "UQ Sport Tennis Centre (29)",
+    "longitude": 153.0151951067465,
+    "latitude": -27.49429925148762
+  },
+  "28": {
+    "name": "UQ Sport Tennis Pavilion (28)",
+    "longitude": 153.01530137661325,
+    "latitude": -27.49454771495378
+  },
+  "21A-D": {
+    "name": "UQ Union Complex (21A-D)",
+    "longitude": 153.0159807509247,
+    "latitude": -27.496296146384694
+  },
+  "99": {
+    "name": "Warehouse Building (99)",
+    "longitude": 153.00853147786816,
+    "latitude": -27.49439029511802
+  },
+  "64": {
+    "name": "Sir William MacGregor Building (64)",
+    "longitude": 153.01232721534456,
+    "latitude": -27.499230950190736
+  },
+  "51": {
+    "name": "Zelman Cowen Building (51)",
+    "longitude": 153.0146869,
+    "latitude": -27.49886633303896
+  }
 }
+
