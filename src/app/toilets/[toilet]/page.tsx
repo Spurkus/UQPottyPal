@@ -37,10 +37,12 @@ const ToiletPage = ({ params }: ToiletPageProps) => {
         className={`flex max-h-[80vh] w-full flex-col space-y-4 transition-all duration-500 ${toilet ? "w-[30%]" : "w-0 opacity-0"}`}
       >
         <h1 className="ml-2 mt-2 truncate text-wrap text-3xl font-bold">Reviews</h1>
-        <AddEditReviewContextProvider toilet={toilet} setReviews={setReviews}>
-          <Reviews reviews={reviews} setReviews={setReviews} />
-          <ReviewModal />
-        </AddEditReviewContextProvider>
+        <div className="flex-1 space-y-4 overflow-y-auto">
+          <AddEditReviewContextProvider toilet={toilet} setReviews={setReviews}>
+            <Reviews reviews={reviews} setReviews={setReviews} />
+            <ReviewModal />
+          </AddEditReviewContextProvider>
+        </div>
       </div>
     </div>
   );
