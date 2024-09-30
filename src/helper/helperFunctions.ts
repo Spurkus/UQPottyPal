@@ -86,3 +86,13 @@ export const toBase64 = (file: File): Promise<string> =>
     reader.onload = () => resolve(reader.result as string);
     reader.onerror = (error) => reject(error);
   });
+
+export const closeDropdown = () => {
+  const elem = document.activeElement as HTMLElement;
+  elem?.blur();
+};
+
+export const getIDFromBuildingName = (buildingName: string) => {
+  const match = buildingName.match(/\(([^)]+)\)/);
+  return match ? match[1] : null;
+};

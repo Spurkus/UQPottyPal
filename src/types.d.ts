@@ -41,3 +41,9 @@ export type Review = {
   vibe: number;
   timestamp: number;
 };
+
+type Building = {
+  name: string;
+  latitude: number;
+  longitude: number;
+};
