@@ -2,17 +2,34 @@
 import TextStyle from "@tiptap/extension-text-style";
 import { Editor, EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
+import Image from "@tiptap/extension-image";
 import "./TextEditorStyle.css";
+import { useCallback } from "react";
+import { toBase64 } from "@/helper/helperFunctions";
 
 interface MenuBarProps {
   editor: Editor | null; // Editor can be null initially
 }
 
 const MenuBar = ({ editor }: MenuBarProps) => {
+  const handleImageUpload = useCallback(
+    async (event: React.ChangeEvent<HTMLInputElement>) => {
+      if (!editor || !event.target.files?.[0]) return;
+      const file = event.target.files[0];
+      const base64 = await toBase64(file);
+      editor.chain().focus().setImage({ src: base64 }).run();
+    },
+    [editor],
+  );
+
   if (!editor) return null;
 
   return (
     <div className="mb-2 flex flex-wrap gap-2">
+      <input type="file" accept="image/*" onChange={handleImageUpload} style={{ display: "none" }} id="image-upload" />
+      <label htmlFor="image-upload" className="btn btn-outline btn-sm">
+        Add Image
+      </label>
       <button
         onClick={() => editor.chain().focus().toggleBold().run()}
         disabled={!editor.can().chain().focus().toggleBold().run()}
@@ -149,6 +166,9 @@ const extensions = [
       keepAttributes: false,
     },
   }),
+  Image.configure({
+    allowBase64: true,
+  }),
 ];
 
 const content = `<p>Default description</p>`;
@@ -160,8 +180,20 @@ const TextEditor = () => {
     immediatelyRender: false,
   });
 
+  const handleDrop = useCallback(
+    async (event: React.DragEvent) => {
+      event.preventDefault();
+      const file = event.dataTransfer.files[0];
+      if (file && file.type.startsWith("image/")) {
+        const base64 = await toBase64(file);
+        editor?.chain().focus().setImage({ src: base64 }).run();
+      }
+    },
+    [editor],
+  );
+
   return (
-    <div className="editor-container">
+    <div className="editor-container" onDrop={handleDrop} onDragOver={(e) => e.preventDefault()}>
       <MenuBar editor={editor} />
       <EditorContent className="flex h-full" editor={editor} />
     </div>

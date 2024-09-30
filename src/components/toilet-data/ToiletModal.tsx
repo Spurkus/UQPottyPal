@@ -57,76 +57,75 @@ const ToiletModal = ({ open, setOpen, toilet }: ToiletModalProps) => {
           </div>
         ) : (
           <>
-            <div className="flex h-full flex-row space-x-4">
-              <div className="flex w-[50%] flex-col">
-                <label className="label pb-0.5 pt-2.5 font-bold">Name</label>
-                <InputField
-                  type="toilet_name"
-                  value={toiletName}
-                  validValue={validToiletName}
-                  valuePlaceholder="Andrew N. Liveris Building, 5th Floor Bathroom"
-                  valueMaxLength={50}
-                  noInput={false}
-                  valueChange={(e) => setToiletName(e.target.value)}
-                />
-                <div className="flex flex-row justify-between space-x-4">
-                  <div className="flex w-[75%] flex-col">
-                    <label className="label pb-0.5 pt-2.5 font-bold">Building Name</label>
-                    <InputField
-                      type="building_name"
-                      value={buildingName}
-                      validValue={validBuildingName}
-                      valuePlaceholder="Andrew N. Liveris Building"
-                      valueMaxLength={50}
-                      noInput={false}
-                      valueChange={(e) => setBuildingName(e.target.value)}
-                    />
-                  </div>
-                  <div className="flex w-[25%] flex-col">
-                    <label className="label pb-0.5 pt-2.5 font-bold">Building Floor</label>
-                    <InputField
-                      type="building_floor"
-                      value={floor}
-                      validValue={validFloor}
-                      valuePlaceholder="3"
-                      valueMaxLength={2}
-                      noInput={false}
-                      valueChange={(e) => setFloor(e.target.value)}
-                    />
-                  </div>
+            <div className="mt-2 flex h-64 w-full">
+              <Map middle={true} />
+            </div>
+            <div className="flex flex-col">
+              <label className="label pb-0.5 pt-2.5 font-bold">Name</label>
+              <InputField
+                type="toilet_name"
+                value={toiletName}
+                validValue={validToiletName}
+                valuePlaceholder="Andrew N. Liveris Building, 5th Floor Bathroom"
+                valueMaxLength={50}
+                noInput={false}
+                valueChange={(e) => setToiletName(e.target.value)}
+              />
+              <div className="flex flex-row justify-between space-x-4">
+                <div className="flex w-[75%] flex-col">
+                  <label className="label pb-0.5 pt-2.5 font-bold">Building Name</label>
+                  <InputField
+                    type="building_name"
+                    value={buildingName}
+                    validValue={validBuildingName}
+                    valuePlaceholder="Andrew N. Liveris Building"
+                    valueMaxLength={50}
+                    noInput={false}
+                    valueChange={(e) => setBuildingName(e.target.value)}
+                  />
                 </div>
-                <div className="flex flex-row justify-between space-x-4">
-                  <div className="flex flex-col">
-                    <label className="label pb-0.5 pt-2.5 font-bold">Latitude</label>
-                    <InputField
-                      type="toilet_latitude"
-                      value={lat.toString()}
-                      validValue={true}
-                      valuePlaceholder={INITIAL_COORDINATES.lat.toString()}
-                      valueMaxLength={50}
-                      noInput={true}
-                      valueChange={(e) => e}
-                    />
-                  </div>
-                  <div className="flex flex-col">
-                    <label className="label pb-0.5 pt-2.5 font-bold">Longitude</label>
-                    <InputField
-                      type="toilet_longitude"
-                      value={lng.toString()}
-                      validValue={true}
-                      valuePlaceholder={INITIAL_COORDINATES.lat.toString()}
-                      valueMaxLength={50}
-                      noInput={true}
-                      valueChange={(e) => e}
-                    />
-                  </div>
+                <div className="flex w-[25%] flex-col">
+                  <label className="label pb-0.5 pt-2.5 font-bold">Building Floor</label>
+                  <InputField
+                    type="building_floor"
+                    value={floor}
+                    validValue={validFloor}
+                    valuePlaceholder="3"
+                    valueMaxLength={2}
+                    noInput={false}
+                    valueChange={(e) => setFloor(e.target.value)}
+                  />
                 </div>
-                <hr className="my-2 border-t border-gray-700" />
-                <TextEditor />
               </div>
-              <div className="mt-2 flex w-full">
-                <Map middle={true} />
+              <div className="flex flex-row justify-between space-x-4">
+                <div className="flex grow flex-col">
+                  <label className="label pb-0.5 pt-2.5 font-bold">Latitude</label>
+                  <InputField
+                    type="toilet_latitude"
+                    value={lat.toString()}
+                    validValue={true}
+                    valuePlaceholder={INITIAL_COORDINATES.lat.toString()}
+                    valueMaxLength={50}
+                    noInput={true}
+                    valueChange={(e) => e}
+                  />
+                </div>
+                <div className="flex grow flex-col">
+                  <label className="label pb-0.5 pt-2.5 font-bold">Longitude</label>
+                  <InputField
+                    type="toilet_longitude"
+                    value={lng.toString()}
+                    validValue={true}
+                    valuePlaceholder={INITIAL_COORDINATES.lat.toString()}
+                    valueMaxLength={50}
+                    noInput={true}
+                    valueChange={(e) => e}
+                  />
+                </div>
               </div>
+              <hr className="my-2 border-t border-gray-700" />
+              <label className="label pt-0 text-lg font-bold">Description</label>
+              <TextEditor />
             </div>
             <div className="modal-action justify-center space-x-24">
               <button className="btn" onClick={handleClose}>

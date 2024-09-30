@@ -78,3 +78,11 @@ export const calculateAverageReviewStat = (reviews: Review[], key: keyof Review)
   const average = reviews.reduce((acc, review) => acc + +review[key], 0) / reviews.length;
   return Math.round(average * 2) / 2; // Round to the nearest 0.5
 };
+
+export const toBase64 = (file: File): Promise<string> =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result as string);
+    reader.onerror = (error) => reject(error);
+  });
