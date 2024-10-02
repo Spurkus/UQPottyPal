@@ -12,6 +12,7 @@ import { showModal } from "@/helper/helperFunctions";
 import { TextEditorContextProvider } from "@/contexts/TextEditorContext";
 import ToiletModal from "@/components/toilet-data/ToiletModal";
 import ReviewButton from "./ReviewButton";
+import QRCodeModal from "@/components/QRCodeModal";
 
 interface ToiletPageProps {
   params: {
@@ -23,6 +24,7 @@ const ToiletPage = ({ params }: ToiletPageProps) => {
   const [toilet, setToilet] = useState<Toilet | null>(null);
   const [reviews, setReviews] = useState<Review[]>([]);
   const [editToilet, setEditToilet] = useState<boolean>(false);
+  const [showQRCode, setShowQRCode] = useState<boolean>(false);
 
   useEffect(() => {
     getToilet(params.toilet).then(async (toilet) => {
@@ -51,21 +53,21 @@ const ToiletPage = ({ params }: ToiletPageProps) => {
                 className="btn btn-outline btn-info h-10 min-h-0 grow text-xl"
                 onClick={() => showModal("toilet_modal", setEditToilet)}
               >
-                Edit
+                Edit Toilet
               </button>
-              <button className="btn btn-outline btn-accent h-10 min-h-0 grow text-xl">QR Code</button>
+              <button
+                className="btn btn-outline btn-accent h-10 min-h-0 grow text-xl"
+                onClick={() => showModal("qr_code_modal", setShowQRCode)}
+              >
+                QR Code
+              </button>
               <ReviewButton />
-              <button className="btn btn-outline btn-error h-10 min-h-0 grow text-xl">Delete</button>
+              <button className="btn btn-outline btn-error h-10 min-h-0 grow text-xl">Delete Toilet</button>
             </div>
           </div>
-          <div
-            className={`flex max-h-[80vh] w-full flex-col space-y-4 transition-all duration-500 ${toilet ? "w-[30%]" : "w-0 opacity-0"}`}
-          >
-            <h1 className="ml-2 mt-2 truncate text-wrap text-3xl font-bold">Reviews</h1>
-            <div className="flex-1 space-y-4 overflow-y-auto">
-              <Reviews reviews={reviews} setReviews={setReviews} />
-              <ReviewModal />
-            </div>
+          <div className="mt-0 flex-1 space-y-4 overflow-y-auto">
+            <Reviews reviews={reviews} setReviews={setReviews} />
+            <ReviewModal />
           </div>
         </AddEditReviewContextProvider>
       </div>
@@ -74,6 +76,7 @@ const ToiletPage = ({ params }: ToiletPageProps) => {
           <ToiletModal open={editToilet} setOpen={setEditToilet} toilet={toilet} />
         </MapContextProvider>
       </TextEditorContextProvider>
+      <QRCodeModal open={showQRCode} setOpen={setShowQRCode} value={toilet.id} />
     </>
   );
 };

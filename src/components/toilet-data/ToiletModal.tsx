@@ -189,14 +189,11 @@ const ToiletModal = ({ open, setOpen, toilet }: ToiletModalProps) => {
               </div>
             </div>
             <div className="modal-action justify-center space-x-24">
-              <button className="btn px-6 text-lg" onClick={handleClose}>
-                Close
-              </button>
-              <button
-                className={`btn btn-success px-6 text-lg ${!validSubmit && "btn-disabled"}`}
-                onClick={handleSubmit}
-              >
+              <button className={`btn btn-success ${!validSubmit && "btn-disabled"}`} onClick={handleSubmit}>
                 {toilet ? "Submit Edit" : "Create"}
+              </button>
+              <button className="btn" onClick={handleClose}>
+                Close
               </button>
             </div>
           </>
