@@ -71,7 +71,10 @@ const Overview = ({ toiletInfo, reviews }: OverviewProps) => {
         </div>
       </div>
       <h4 className="mt-3 text-xl font-bold leading-5">Description</h4>
-      <p className="text-wrap leading-4">{toiletInfo?.description}</p>
+      <p
+        className="text-wrap leading-4"
+        dangerouslySetInnerHTML={{ __html: toiletInfo?.description || "<p>Default description</p>" }}
+      ></p>
       <h2 className="mt-3 text-2xl font-bold">Average Statistics</h2>
       {reviews.length > 0 ? (
         <Statistics

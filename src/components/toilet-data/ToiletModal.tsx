@@ -1,13 +1,17 @@
 import { InputDropdownField, InputField } from "@/components/InputFields";
 import useInputValidator from "@/hooks/useInputValidator";
 import { Building, Toilet } from "@/types";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useMemo, useCallback, useEffect } from "react";
 import Loading from "@/components/Loading";
 import { closeModal, getIDFromBuildingName } from "@/helper/helperFunctions";
 import { useMap } from "@/contexts/MapContext";
 import Map from "@/components/Map";
 import TextEditor from "@/components/TextEditor";
 import buildings from "@/buildings.json";
+import { GeoPoint } from "firebase/firestore";
+import { useTextEditor } from "@/contexts/TextEditorContext";
+import { editToilet, createToilet } from "@/helper/firestoreFunctions";
+import { useRouter } from "next/navigation";
 
 interface ToiletModalProps {
   open: boolean;
@@ -20,9 +24,15 @@ const TOILET_NAME_REGEX = /^[A-Za-z0-9\s,.'-]{1,50}$/;
 const FLOOR_REGEX = /^[0-9a-zA-Z]{1,2}$/;
 
 const ToiletModal = ({ open, setOpen, toilet }: ToiletModalProps) => {
+  const { editor } = useTextEditor();
   const { moveTo, lat, lng } = useMap();
+  const router = useRouter();
+
   const toiletValidator = (name: string) => TOILET_NAME_REGEX.test(name);
   const [toiletName, setToiletName, validToiletName] = useInputValidator(toilet?.name ?? "", toiletValidator);
+
+  const defaultLatitude = useMemo(() => toilet?.location.latitude ?? INITIAL_COORDINATES.lat, [toilet]);
+  const defaultLongitude = useMemo(() => toilet?.location.longitude ?? INITIAL_COORDINATES.lng, [toilet]);
 
   const buildingData: Record<string, Building> = buildings;
   const buildingNames = Object.values(buildingData).map((building) => building.name);
@@ -39,6 +49,11 @@ const ToiletModal = ({ open, setOpen, toilet }: ToiletModalProps) => {
   const floorValidator = (floor: string) => FLOOR_REGEX.test(floor);
   const [floor, setFloor, validFloor] = useInputValidator(toilet?.floor ?? "", floorValidator);
 
+  const validSubmit = useMemo(
+    () => validToiletName && validBuildingName && validFloor,
+    [validToiletName, validBuildingName, validFloor],
+  );
+
   const [submitting, setSubmitting] = useState<boolean>(false);
 
   const moveToBuilding = (buildingName: string) => {
@@ -49,16 +64,44 @@ const ToiletModal = ({ open, setOpen, toilet }: ToiletModalProps) => {
     moveTo(building.latitude, building.longitude);
   };
 
-  const setDefaultValues = () => {
+  const setDefaultValues = useCallback(() => {
     setToiletName(toilet?.name ?? "");
     setBuildingName(toilet?.building ?? "");
     setFloor(toilet?.floor ?? "");
-    moveTo(toilet?.location.latitude ?? INITIAL_COORDINATES.lat, toilet?.location.longitude ?? INITIAL_COORDINATES.lng);
-  };
+    moveTo(defaultLatitude, defaultLongitude);
+  }, [toilet, setToiletName, setBuildingName, setFloor, moveTo, defaultLatitude, defaultLongitude]);
+
+  useEffect(() => {
+    setDefaultValues();
+  }, [setDefaultValues, open]);
 
   const handleClose = () => {
     setDefaultValues();
     closeModal("toilet_modal", setOpen);
+  };
+
+  const handleSubmit = async () => {
+    if (!validSubmit) return;
+    setSubmitting(true);
+
+    const newToilet: Toilet | Omit<Toilet, "id"> = {
+      ...toilet,
+      name: toiletName,
+      building: buildingName,
+      floor,
+      location: new GeoPoint(lat, lng),
+      description: editor?.getHTML() ?? "",
+    };
+
+    if (toilet) {
+      await editToilet(newToilet as Toilet).then(() => {
+        location.reload();
+      });
+    } else {
+      await createToilet(newToilet as Omit<Toilet, "id">).then((toiletID) => {
+        router.push(`/toilets/${toiletID}`);
+      });
+    }
   };
 
   return (
@@ -146,8 +189,14 @@ const ToiletModal = ({ open, setOpen, toilet }: ToiletModalProps) => {
               </div>
             </div>
             <div className="modal-action justify-center space-x-24">
-              <button className="btn" onClick={handleClose}>
+              <button className="btn px-6 text-lg" onClick={handleClose}>
                 Close
+              </button>
+              <button
+                className={`btn btn-success px-6 text-lg ${!validSubmit && "btn-disabled"}`}
+                onClick={handleSubmit}
+              >
+                {toilet ? "Submit Edit" : "Create"}
               </button>
             </div>
           </>

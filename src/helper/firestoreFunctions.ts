@@ -48,3 +48,17 @@ export const getToilet = async (toiletID: string): Promise<Toilet> => {
   const toiletSnapshot = await getDocs(toiletQuery);
   return toiletSnapshot.docs[0].data() as Toilet;
 };
+
+export const createToilet = async (toilet: Omit<Toilet, "id">) => {
+  const toiletCollection = collection(db, "toilet");
+  const toiletRef = doc(toiletCollection);
+  const toiletID = toiletRef.id;
+  await setDoc(toiletRef, { ...toilet, id: toiletID });
+  return toiletID;
+};
+
+export const editToilet = async (toilet: Toilet) => {
+  const toiletCollection = collection(db, "toilet");
+  const toiletRef = doc(toiletCollection, toilet.id);
+  await setDoc(toiletRef, toilet);
+};

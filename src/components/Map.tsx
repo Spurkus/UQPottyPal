@@ -5,12 +5,19 @@ import { useEffect } from "react";
 interface MapProps {
   shrinks?: boolean;
   middle?: boolean;
+  location?: {
+    lat: number;
+    lng: number;
+  };
 }
 
-const Map = ({ shrinks, middle }: MapProps) => {
-  const { moveZoomTo, zoom, mapContainer, toilet, setClickable } = useMap();
+const Map = ({ shrinks, middle, location }: MapProps) => {
+  const { moveZoomTo, zoom, mapContainer, toilet, setClickable, moveTo } = useMap();
 
   useEffect(() => setClickable(!!shrinks), [shrinks, setClickable]);
+  useEffect(() => {
+    if (location) moveTo(location.lat, location.lng, 17);
+  }, [location, moveTo]);
 
   const ZoomButton = () => {
     const zoomIn = () => moveZoomTo(zoom + 1);

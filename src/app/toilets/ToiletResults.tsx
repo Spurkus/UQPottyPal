@@ -7,6 +7,7 @@ import Link from "next/link";
 import ToiletModal from "@/components/toilet-data/ToiletModal";
 import { showModal } from "@/helper/helperFunctions";
 import { MapContextProvider } from "@/contexts/MapContext";
+import { TextEditorContextProvider } from "@/contexts/TextEditorContext";
 
 interface ToiletResultProps {
   toilet: Toilet;
@@ -21,8 +22,10 @@ const ToiletResult = ({ toilet }: ToiletResultProps) => {
       rel="noopener noreferrer"
     >
       <div className="flex flex-col space-y-2">
-        <h3 className="text-lg">{toilet.name}</h3>
-        <p className="text-sm font-normal">{toilet.description}</p>
+        <h3 className="text-lg font-bold">{toilet.name}</h3>
+        <p className="text-wrap leading-4">
+          {toilet.location.latitude}, {toilet.location.longitude}
+        </p>
       </div>
       <div className="flex flex-col space-y-2">
         <p className="text-sm"> {toilet.building}</p>
@@ -71,9 +74,11 @@ const ToiletResults = () => {
             <ToiletResult key={toilet.id} toilet={toilet} />
           ))}
       </div>
-      <MapContextProvider>
-        <ToiletModal open={createToilet} setOpen={setCreateToilet} />
-      </MapContextProvider>
+      <TextEditorContextProvider defaultContent="<p>Default Description</p>">
+        <MapContextProvider>
+          <ToiletModal open={createToilet} setOpen={setCreateToilet} />
+        </MapContextProvider>
+      </TextEditorContextProvider>
     </>
   );
 };
