@@ -62,3 +62,15 @@ export const editToilet = async (toilet: Toilet) => {
   const toiletRef = doc(toiletCollection, toilet.id);
   await setDoc(toiletRef, toilet);
 };
+
+export const deleteToiletAndReviews = async (toiletID: string) => {
+  const toiletCollection = collection(db, "toilet");
+  const toiletRef = doc(toiletCollection, toiletID);
+  await deleteDoc(toiletRef);
+  const reviewCollection = collection(db, "review");
+  const reviewQuery = query(reviewCollection, where("toiletID", "==", toiletID));
+  const reviewSnapshot = await getDocs(reviewQuery);
+  reviewSnapshot.docs.forEach(async (doc) => {
+    await deleteDoc(doc.ref);
+  });
+};

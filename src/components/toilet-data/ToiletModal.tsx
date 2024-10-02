@@ -38,7 +38,8 @@ const ToiletModal = ({ open, setOpen, toilet }: ToiletModalProps) => {
   const buildingNames = Object.values(buildingData).map((building) => building.name);
 
   const buildingValidator = useCallback(
-    (building: string) => buildingNames.some((name) => name.toLowerCase().startsWith(building.toLowerCase())),
+    (building: string) =>
+      buildingNames.some((name) => name.toLowerCase().startsWith(building.toLowerCase()) && building.length > 0),
     [buildingNames],
   );
   const [buildingName, setBuildingName, validBuildingName] = useInputValidator(
@@ -188,7 +189,7 @@ const ToiletModal = ({ open, setOpen, toilet }: ToiletModalProps) => {
                 <Map middle={true} />
               </div>
             </div>
-            <div className="modal-action justify-center space-x-24">
+            <div className="modal-action justify-center space-x-64">
               <button className={`btn btn-success ${!validSubmit && "btn-disabled"}`} onClick={handleSubmit}>
                 {toilet ? "Submit Edit" : "Create"}
               </button>

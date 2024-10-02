@@ -13,6 +13,7 @@ import { TextEditorContextProvider } from "@/contexts/TextEditorContext";
 import ToiletModal from "@/components/toilet-data/ToiletModal";
 import ReviewButton from "./ReviewButton";
 import QRCodeModal from "@/components/QRCodeModal";
+import DeleteToiletModal from "./DeleteToiletModal";
 
 interface ToiletPageProps {
   params: {
@@ -25,6 +26,7 @@ const ToiletPage = ({ params }: ToiletPageProps) => {
   const [reviews, setReviews] = useState<Review[]>([]);
   const [editToilet, setEditToilet] = useState<boolean>(false);
   const [showQRCode, setShowQRCode] = useState<boolean>(false);
+  const [showDelete, setShowDelete] = useState<boolean>(false);
 
   useEffect(() => {
     getToilet(params.toilet).then(async (toilet) => {
@@ -62,7 +64,12 @@ const ToiletPage = ({ params }: ToiletPageProps) => {
                 QR Code
               </button>
               <ReviewButton />
-              <button className="btn btn-outline btn-error h-10 min-h-0 grow text-xl">Delete Toilet</button>
+              <button
+                className="btn btn-outline btn-error h-10 min-h-0 grow text-xl"
+                onClick={() => showModal("delete_modal", setShowDelete)}
+              >
+                Delete Toilet
+              </button>
             </div>
           </div>
           <div className="mt-0 flex-1 space-y-4 overflow-y-auto">
@@ -77,6 +84,7 @@ const ToiletPage = ({ params }: ToiletPageProps) => {
         </MapContextProvider>
       </TextEditorContextProvider>
       <QRCodeModal open={showQRCode} setOpen={setShowQRCode} value={toilet.id} />
+      <DeleteToiletModal open={showDelete} setOpen={setShowDelete} toiletId={toilet.id} />
     </>
   );
 };
