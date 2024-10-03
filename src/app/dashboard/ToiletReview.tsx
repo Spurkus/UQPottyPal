@@ -8,6 +8,8 @@ import Overview from "@/components/toilet-data/ToiletOverview";
 import OtherToilets from "@/components/toilet-data/OtherToilets";
 import { getReviewsForToilet, getToiletsInBuilding } from "@/helper/firestoreFunctions";
 import { AddEditReviewContextProvider, useAddEditReview } from "@/contexts/AddEditReview";
+import QRCodeModal from "@/components/QRCodeModal";
+import QRCode from "react-qr-code";
 
 interface MenuProps {
   menu: string;
@@ -68,6 +70,7 @@ const ToiletReviewDisplay = ({
   setReviews,
 }: ToiletReviewDisplayProps) => {
   const { setVisible, setEditReview } = useAddEditReview();
+  const [showQRCode, setShowQRCode] = useState<boolean>(false);
 
   const handleOpenReviewModal = () => {
     setEditReview(null);
@@ -79,7 +82,18 @@ const ToiletReviewDisplay = ({
       <div className={`w-full overflow-y-auto rounded-3xl bg-base-300 p-5 ${menu === "overview" && "h-full"}`}>
         <div className={`flex flex-col ${!toiletInfo && "hidden"} `}>
           <Menu menu={menu} setMenu={setMenu} visible={menuVisibility} />
-          {menu === "overview" && <Overview toiletInfo={toiletInfo} reviews={reviews} />}
+          {menu === "overview" && (
+            <>
+              <button
+                className="btn btn-outline btn-info h-8 min-h-0"
+                onClick={() => showModal("qr_code_modal", setShowQRCode)}
+              >
+                QR Code
+              </button>
+              <Overview toiletInfo={toiletInfo} reviews={reviews} />
+              <QRCodeModal open={showQRCode} setOpen={setShowQRCode} value={toiletInfo?.id ?? ""} />
+            </>
+          )}
           {menu === "reviews" && (
             <>
               <h1 className="mb-2 truncate text-wrap text-3xl font-bold">{toiletInfo?.name} Reviews</h1>
