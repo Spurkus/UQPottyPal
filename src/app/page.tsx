@@ -19,7 +19,7 @@ const Home = (): JSX.Element => {
         </h1>
         <p className="text-lg">
           UQPottyPal is your go-to companion for finding and reviewing public restrooms on and around the University of
-          Queensland campus. Whether you're a student, staff member, or visitor, UQPottyPal helps you locate the
+          Queensland campus. Whether you&apos;re a student, staff member, or visitor, UQPottyPal helps you locate the
           cleanest and most accessible restrooms nearby.
         </p>
         <p className="text-lg">

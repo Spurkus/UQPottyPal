@@ -12,7 +12,7 @@ For the advanced feature, I chose to choose the map with markers.
 
 ![Image of website](https://i.imgur.com/QLu3yqM.png)
 
-## AI Referencing
+## 🤖 AI Referencing
 
 ChatGPT 4o was used to create docstrings. After being created, if they were incorrect, the docstrings would be edited to fit the function/component it was referencing.
 
@@ -26,10 +26,3 @@ ChatGPT 4o was used to create docstrings. After being created, if they were inco
 - [**TipTap**](https://tiptap.dev/) as the WYSIWYG text editor
 - [**React QR Code**](https://www.npmjs.com/package/react-qr-code) to create QR codes for each toilet id
 - [**Canvas Confetti**](https://www.npmjs.com/package/canvas-confetti) to create a touch of love and happiness in this world of dispair... and to add confetti after successfully creating a review
-
----
-
-<div style={{ display: 'flex', alignItems: 'center' }}>
-    <img src="public/logo.svg" alt="Logo" style={{ width: '50px', height: 'auto' }} />
-    <h1 class="text-2xl font-bold">UQ Potty Pal</h1>
-</div>
