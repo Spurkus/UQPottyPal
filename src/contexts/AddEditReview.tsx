@@ -42,8 +42,16 @@ export interface AddEditReviewProps {
   children: React.ReactNode;
 }
 
+// The context provider for the AddEditReview context
 export const AddEditReview = createContext<AddEditReviewType | null>(null);
 
+/**
+ * AddEditReviewContextProvider component
+ * Provides the AddEditReview context to its children components.
+ *
+ * @param {AddEditReviewProps} props - The component props
+ * @returns {JSX.Element} The rendered AddEditReviewContextProvider component
+ */
 export const AddEditReviewContextProvider = ({ toilet, setReviews, children }: AddEditReviewProps) => {
   const [visible, setVisible] = useState<boolean>(false);
 
@@ -77,6 +85,9 @@ export const AddEditReviewContextProvider = ({ toilet, setReviews, children }: A
   );
   const [submitting, setSubmitting] = useState<boolean>(false);
 
+  /**
+   * Sets the default values for the review form
+   * */
   const setDefaultValues = useCallback(() => {
     setName(editReview?.username ?? "");
     setComment(editReview?.comment ?? "");
@@ -89,11 +100,13 @@ export const AddEditReviewContextProvider = ({ toilet, setReviews, children }: A
 
   useEffect(() => setDefaultValues(), [editReview, setDefaultValues]);
 
+  /** Closes the review modal */
   const handleClose = () => {
     closeModal("review_modal", setVisible);
     setDefaultValues();
   };
 
+  /** Handles form submission */
   const handleSubmit = async () => {
     if (!validForm || !toilet) return;
     setSubmitting(true);
@@ -157,6 +170,14 @@ export const AddEditReviewContextProvider = ({ toilet, setReviews, children }: A
   );
 };
 
+/**
+ * useAddEditReview hook
+ *
+ * Custom hook to access the AddEditReview context.
+ *
+ * @returns {AddEditReviewType} The AddEditReview context
+ * @throws {Error} If the hook is not used within an AddEditReviewProvider
+ */
 export const useAddEditReview = () => {
   const context = useContext(AddEditReview);
   if (!context) throw new Error("useAddEditReview must be used within an AddEditReviewProvider");

@@ -10,7 +10,20 @@ interface MenuBarProps {
   editor: Editor | null;
 }
 
+/**
+ * MenuBar component
+ *
+ * The menu bar for the text editor
+ *
+ * @param {MenuBarProps} props - The component
+ * @returns {JSX.Element} The rendered MenuBar component
+ */
 const MenuBar = ({ editor }: MenuBarProps) => {
+  /**
+   * Handle image upload
+   *
+   * @param {React.ChangeEvent<HTMLInputElement>} event - The input event
+   */
   const handleImageUpload = useCallback(
     async (event: React.ChangeEvent<HTMLInputElement>) => {
       if (!editor || !event.target.files?.[0]) return;
@@ -153,6 +166,9 @@ const MenuBar = ({ editor }: MenuBarProps) => {
   );
 };
 
+/**
+ * TextEditor component
+ */
 const TextEditor = () => {
   const { editor } = useTextEditor();
 

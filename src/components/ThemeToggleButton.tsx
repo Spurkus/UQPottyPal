@@ -2,6 +2,11 @@
 import { useGlobalTheme } from "@/contexts/GlobalTheme";
 import { useMemo } from "react";
 
+/**
+ * ThemeToggleButton component
+ *
+ * This component represents a toggle button for switching between light and dark themes.
+ */
 const ThemeToggleButton = () => {
   const { theme, toggleTheme } = useGlobalTheme();
   const isDark = useMemo(() => theme === "dark", [theme]);

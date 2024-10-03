@@ -10,10 +10,24 @@ interface DeleteToiletModalProps {
   toiletId: string;
 }
 
-const DeleteToiletModal = ({ open, setOpen, toiletId }: DeleteToiletModalProps) => {
+/**
+ * DeleteToiletModal component that displays a modal for deleting a toilet and its associated reviews.
+ * It provides users with a confirmation prompt and handles the deletion process.
+ *
+ * @param {boolean} open - Controls whether the modal is visible.
+ * @param {React.Dispatch<React.SetStateAction<boolean>>} setOpen - Function to set the open state of the modal.
+ * @param {string} toiletId - The ID of the toilet to be deleted.
+ *
+ * @returns {JSX.Element} The modal dialog for deleting a toilet.
+ */
+const DeleteToiletModal = ({ open, setOpen, toiletId }: DeleteToiletModalProps): JSX.Element => {
   const router = useRouter();
   const [deleting, setDeleting] = useState<boolean>(false);
 
+  /**
+   * Handles the deletion of the toilet and its associated reviews.
+   * Navigates the user to the "/toilets" page after successful deletion.
+   */
   const handleDelete = async () => {
     setDeleting(true);
     await deleteToiletAndReviews(toiletId);
@@ -35,9 +49,11 @@ const DeleteToiletModal = ({ open, setOpen, toiletId }: DeleteToiletModalProps) 
               deleted :O
             </p>
             <div className="flex space-x-32">
+              {/* Button to confirm deletion */}
               <button className="btn btn-error" onClick={handleDelete}>
                 Delete
               </button>
+              {/* Button to cancel the deletion and close the modal */}
               <button className="btn" onClick={() => closeModal("delete_modal", setOpen)}>
                 Cancel
               </button>

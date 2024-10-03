@@ -7,6 +7,14 @@ interface QRCodeModalProps {
   value: string;
 }
 
+/**
+ * QRCodeModal component
+ *
+ * This component renders a modal for displaying a QR code.
+ *
+ * @param {QRCodeModalProps} props - The component props
+ * @returns {JSX.Element} The rendered QRCodeModal component
+ */
 const QRCodeModal = ({ open, setOpen, value }: QRCodeModalProps) => {
   return (
     <dialog id="qr_code_modal" className="modal" open={open}>

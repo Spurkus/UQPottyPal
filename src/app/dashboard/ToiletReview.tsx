@@ -9,30 +9,44 @@ import OtherToilets from "@/components/toilet-data/OtherToilets";
 import { getReviewsForToilet, getToiletsInBuilding } from "@/helper/firestoreFunctions";
 import { AddEditReviewContextProvider, useAddEditReview } from "@/contexts/AddEditReview";
 import QRCodeModal from "@/components/QRCodeModal";
-import QRCode from "react-qr-code";
 
+/**
+ * Props for the Menu component.
+ */
 interface MenuProps {
-  menu: string;
-  setMenu: React.Dispatch<React.SetStateAction<string>>;
-  visible: boolean;
+  menu: string; // Current menu selection
+  setMenu: React.Dispatch<React.SetStateAction<string>>; // Function to update menu
+  visible: boolean; // Controls menu visibility
 }
 
+/**
+ * Props for the MenuButton component.
+ */
 interface MenuButtonProps {
-  menu: string;
-  setMenu: React.Dispatch<React.SetStateAction<string>>;
-  name: string;
+  menu: string; // Current menu selection
+  setMenu: React.Dispatch<React.SetStateAction<string>>; // Function to update menu
+  name: string; // Name of the menu item
 }
 
+/**
+ * Props for the ToiletReviewDisplay component.
+ */
 interface ToiletReviewDisplayProps {
-  toiletInfo: Toilet | null;
-  reviews: Review[];
-  toiletsInBuilding: Toilet[];
-  menu: string;
-  setMenu: React.Dispatch<React.SetStateAction<string>>;
-  menuVisibility: boolean;
-  setReviews: React.Dispatch<React.SetStateAction<Review[]>>;
+  toiletInfo: Toilet | null; // Information about the selected toilet
+  reviews: Review[]; // List of reviews for the toilet
+  toiletsInBuilding: Toilet[]; // List of toilets in the same building
+  menu: string; // Current menu selection
+  setMenu: React.Dispatch<React.SetStateAction<string>>; // Function to update menu
+  menuVisibility: boolean; // Controls menu visibility
+  setReviews: React.Dispatch<React.SetStateAction<Review[]>>; // Function to update reviews
 }
 
+/**
+ * MenuButton component - Renders a button for selecting menu options.
+ *
+ * @param {MenuButtonProps} props - Properties for the MenuButton component.
+ * @returns {JSX.Element} A button that sets the selected menu.
+ */
 const MenuButton = ({ menu, setMenu, name }: MenuButtonProps) => {
   return (
     <div className="w-full">
@@ -42,13 +56,19 @@ const MenuButton = ({ menu, setMenu, name }: MenuButtonProps) => {
         name="options"
         aria-label={capitaliseFirstLetter(name)}
         onClick={() => setMenu(name)}
-        onChange={() => {}}
+        onChange={() => {}} // Empty onChange to satisfy JSX rules
         checked={menu === name}
       />
     </div>
   );
 };
 
+/**
+ * Menu component - Renders the menu for navigating between different sections (overview, reviews, others).
+ *
+ * @param {MenuProps} props - Properties for the Menu component.
+ * @returns {JSX.Element} A menu that allows switching between different views.
+ */
 const Menu = ({ menu, setMenu, visible }: MenuProps) => {
   const menuItems = ["overview", "reviews", "others"];
   return (
@@ -60,6 +80,12 @@ const Menu = ({ menu, setMenu, visible }: MenuProps) => {
   );
 };
 
+/**
+ * ToiletReviewDisplay component - Displays the overview, reviews, or other toilets for a selected toilet.
+ *
+ * @param {ToiletReviewDisplayProps} props - Properties for the ToiletReviewDisplay component.
+ * @returns {JSX.Element} A display that shows toilet information, reviews, or other toilets in the building.
+ */
 const ToiletReviewDisplay = ({
   toiletInfo,
   reviews,
@@ -72,6 +98,9 @@ const ToiletReviewDisplay = ({
   const { setVisible, setEditReview } = useAddEditReview();
   const [showQRCode, setShowQRCode] = useState<boolean>(false);
 
+  /**
+   * Opens the review modal for adding or editing reviews.
+   */
   const handleOpenReviewModal = () => {
     setEditReview(null);
     showModal("review_modal", setVisible);
@@ -116,25 +145,30 @@ const ToiletReviewDisplay = ({
   );
 };
 
+/**
+ * Main ToiletReview component - Handles fetching reviews, toilets in the building, and menu visibility.
+ *
+ * @returns {JSX.Element} The main component that manages the toilet reviews interface.
+ */
 const ToiletReview = () => {
-  // Toilet state
+  // State for the currently selected toilet
   const { toilet } = useMap();
   const [toiletInfo, setToiletInfo] = useState(toilet);
 
-  // Review state for the toilet
+  // State for reviews related to the selected toilet
   const [reviews, setReviews] = useState<Review[]>([]);
 
-  // Toilets in buildings
+  // State for other toilets in the same building
   const [toiletsInBuilding, setToiletsInBuilding] = useState<Toilet[]>([]);
 
-  // Menu state
+  // State for controlling the menu and its visibility
   const [menu, setMenu] = useState("overview");
   const [menuVisibility, setMenuVisibility] = useState(!!toilet);
 
-  // Show the toilet review when the toilet is set and hide it when the toilet is unset
+  // Effect to handle fetching reviews and other toilets when a toilet is selected
   useEffect(() => {
     if (toilet) {
-      // Get the reviews for the toilet
+      // Fetch reviews and other toilets asynchronously
       const fetchReviewsAndToiletsInBuilding = async () => {
         const reviews = await getReviewsForToilet(toilet?.id ?? "");
         setReviews(reviews);
@@ -143,7 +177,7 @@ const ToiletReview = () => {
       };
       fetchReviewsAndToiletsInBuilding();
 
-      // Accounts for the delay in showing the toilet review
+      // Delayed visibility and state updates for smooth transitions
       const menuVisibilityTimeout = setTimeout(() => setMenuVisibility(true), 150);
       const timeout = setTimeout(() => {
         setToiletInfo(toilet);
@@ -154,7 +188,7 @@ const ToiletReview = () => {
         clearTimeout(menuVisibilityTimeout);
       };
     } else {
-      // Accounts for the delay in hiding the toilet review
+      // Handle hiding the toilet review display when no toilet is selected
       const menuVisibilityTimeout = setTimeout(() => setMenuVisibility(false), 150);
       const timeout = setTimeout(() => {
         setToiletInfo(null);

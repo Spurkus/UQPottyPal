@@ -1,4 +1,5 @@
 "use client";
+
 import TextStyle from "@tiptap/extension-text-style";
 import { Editor, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
@@ -14,6 +15,7 @@ interface TextEditorContextProviderProps {
   defaultContent: string;
 }
 
+// Configure extensions for the text editor
 const extensions = [
   TextStyle.configure({}),
   StarterKit.configure({
@@ -31,9 +33,22 @@ const extensions = [
   }),
 ];
 
+// Create context for the text editor
 export const TextInterfaceContext = createContext<EditorType | null>(null);
 
-export const TextEditorContextProvider = ({ children, defaultContent }: TextEditorContextProviderProps) => {
+/**
+ * TextEditorContextProvider component
+ *
+ * Provides the text editor context to its children components.
+ *
+ * @param {TextEditorContextProviderProps} props - The component props
+ * @returns {JSX.Element} The rendered TextEditorContextProvider component
+ */
+export const TextEditorContextProvider = ({
+  children,
+  defaultContent,
+}: TextEditorContextProviderProps): JSX.Element => {
+  // Initialize the editor with extensions and default content
   const editor = useEditor({
     extensions,
     content: defaultContent,
@@ -43,9 +58,16 @@ export const TextEditorContextProvider = ({ children, defaultContent }: TextEdit
   return <TextInterfaceContext.Provider value={{ editor }}>{children}</TextInterfaceContext.Provider>;
 };
 
-export const useTextEditor = () => {
+/**
+ * useTextEditor hook
+ *
+ * Custom hook to access the text editor context.
+ *
+ * @returns {EditorType} The text editor context
+ * @throws {Error} If used outside of a TextEditorContextProvider
+ */
+export const useTextEditor = (): EditorType => {
   const context = useContext(TextInterfaceContext);
   if (!context) throw new Error("useTextEditor must be used within a TextEditorContextProvider");
-
   return context;
 };

@@ -3,6 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { useGlobalTheme } from "@/contexts/GlobalTheme";
 
+/**
+ * NavbarLogo component
+ * This component represents the logo of the UQPottyPal application.
+ *
+ * @returns {JSX.Element} The rendered Navbar Logo
+ */
 const NavbarLogo = () => {
   const { theme } = useGlobalTheme();
   return (

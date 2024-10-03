@@ -15,6 +15,14 @@ export interface GlobalThemeProps {
 
 export const GlobalTheme = createContext<GlobalThemeType | null>(null);
 
+/**
+ * GlobalThemeContextProvider component
+ *
+ * Provides the global theme context to its children components.
+ *
+ * @param {GlobalThemeProps} props - The component props
+ * @returns {JSX.Element} The rendered GlobalThemeContextProvider component
+ */
 export const GlobalThemeContextProvider = ({ children, initialTheme }: GlobalThemeProps) => {
   const [theme, setThemeState] = useState<string>(initialTheme);
 
@@ -37,6 +45,14 @@ export const GlobalThemeContextProvider = ({ children, initialTheme }: GlobalThe
   );
 };
 
+/**
+ * useGlobalTheme hook
+ *
+ * A custom hook that returns the global theme context.
+ *
+ * @returns {GlobalThemeType} The global
+ * @throws {Error} If the hook is not used within a GlobalThemeContextProvider
+ */
 export const useGlobalTheme = () => {
   const context = useContext(GlobalTheme);
   if (!context) throw new Error("useGlobalTheme must be used within a GlobalThemeProvider");

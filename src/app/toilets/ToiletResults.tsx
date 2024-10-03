@@ -13,7 +13,13 @@ interface ToiletResultProps {
   toilet: Toilet;
 }
 
-const ToiletResult = ({ toilet }: ToiletResultProps) => {
+/**
+ * ToiletResult component renders a clickable button that links to a toilet's page.
+ *
+ * @param {ToiletResultProps} props - Contains a toilet object with details such as name, location, and building.
+ * @returns {JSX.Element} A button that displays the toilet's information and links to its detailed page.
+ */
+const ToiletResult = ({ toilet }: ToiletResultProps): JSX.Element => {
   return (
     <Link
       className="btn flex min-h-24 flex-row items-start justify-between rounded-2xl bg-base-300 p-4 text-start hover:btn-accent"
@@ -28,17 +34,26 @@ const ToiletResult = ({ toilet }: ToiletResultProps) => {
         </p>
       </div>
       <div className="flex flex-col space-y-2">
-        <p className="text-sm"> {toilet.building}</p>
+        <p className="text-sm">{toilet.building}</p>
       </div>
     </Link>
   );
 };
 
-const ToiletResults = () => {
+/**
+ * ToiletResults component displays a searchable list of toilets and an option to create a new toilet.
+ *
+ * @returns {JSX.Element} The search input, list of toilets, and a button to create a new toilet.
+ */
+const ToiletResults = (): JSX.Element => {
   const [createToilet, setCreateToilet] = useState<boolean>(false);
   const [results, setResults] = useState<Toilet[]>([]);
   const [search, setSearch] = useState<string>("");
 
+  /**
+   * Fetches the list of toilets when the component mounts.
+   * The fetched data is stored in the `results` state.
+   */
   useEffect(() => {
     const fetchToilets = async () => {
       const toilets = await getAllToilets();
@@ -51,6 +66,7 @@ const ToiletResults = () => {
   return (
     <>
       <div className="flex flex-row justify-between space-x-4">
+        {/* InputField component to search for a toilet by name */}
         <InputField
           type="search"
           value={search}
@@ -60,6 +76,7 @@ const ToiletResults = () => {
           valueChange={(e) => setSearch(e.target.value)}
           validValue={true}
         />
+        {/* Button to open the modal for creating a new toilet */}
         <button
           className="btn btn-warning btn-sm min-h-10 px-8"
           onClick={() => showModal("toilet_modal", setCreateToilet)}
@@ -68,12 +85,14 @@ const ToiletResults = () => {
         </button>
       </div>
       <div className="mt-4 space-y-4">
+        {/* Filters toilets based on the search input and maps them to ToiletResult components */}
         {results
           .filter((toilet) => toilet.name.toLowerCase().includes(search.toLowerCase()))
           .map((toilet) => (
             <ToiletResult key={toilet.id} toilet={toilet} />
           ))}
       </div>
+      {/* Modal for creating a new toilet */}
       <TextEditorContextProvider defaultContent="<p>Default Description</p>">
         <MapContextProvider>
           <ToiletModal open={createToilet} setOpen={setCreateToilet} />

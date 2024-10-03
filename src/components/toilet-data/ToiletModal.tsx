@@ -23,11 +23,21 @@ const INITIAL_COORDINATES = { lng: 153.01301, lat: -27.49748, zoom: 16 };
 const TOILET_NAME_REGEX = /^[A-Za-z0-9\s,.'-]{1,50}$/;
 const FLOOR_REGEX = /^[0-9a-zA-Z]{1,2}$/;
 
-const ToiletModal = ({ open, setOpen, toilet }: ToiletModalProps) => {
+/**
+ * ToiletModal component
+ *
+ * This component renders a modal for creating or editing a toilet entry.
+ * It includes form fields for toilet details and a map for location selection.
+ *
+ * @param {ToiletModalProps} props - The component props
+ * @returns {JSX.Element} The rendered ToiletModal component
+ */
+const ToiletModal = ({ open, setOpen, toilet }: ToiletModalProps): JSX.Element => {
   const { editor } = useTextEditor();
   const { moveTo, lat, lng } = useMap();
   const router = useRouter();
 
+  // Input validators and state
   const toiletValidator = (name: string) => TOILET_NAME_REGEX.test(name);
   const [toiletName, setToiletName, validToiletName] = useInputValidator(toilet?.name ?? "", toiletValidator);
 
@@ -57,6 +67,10 @@ const ToiletModal = ({ open, setOpen, toilet }: ToiletModalProps) => {
 
   const [submitting, setSubmitting] = useState<boolean>(false);
 
+  /**
+   * Moves the map to the selected building
+   * @param {string} buildingName - The name of the building to move to
+   */
   const moveToBuilding = (buildingName: string) => {
     setBuildingName(buildingName);
     const buildingID = getIDFromBuildingName(buildingName);
@@ -65,6 +79,9 @@ const ToiletModal = ({ open, setOpen, toilet }: ToiletModalProps) => {
     moveTo(building.latitude, building.longitude);
   };
 
+  /**
+   * Sets the default values for the form fields
+   */
   const setDefaultValues = useCallback(() => {
     setToiletName(toilet?.name ?? "");
     setBuildingName(toilet?.building ?? "");
@@ -76,11 +93,17 @@ const ToiletModal = ({ open, setOpen, toilet }: ToiletModalProps) => {
     setDefaultValues();
   }, [setDefaultValues, open]);
 
+  /**
+   * Handles closing the modal
+   */
   const handleClose = () => {
     setDefaultValues();
     closeModal("toilet_modal", setOpen);
   };
 
+  /**
+   * Handles form submission
+   */
   const handleSubmit = async () => {
     if (!validSubmit) return;
     setSubmitting(true);
@@ -115,8 +138,10 @@ const ToiletModal = ({ open, setOpen, toilet }: ToiletModalProps) => {
           </div>
         ) : (
           <>
+            {/* Form fields */}
             <div className="flex h-full flex-row space-x-4">
               <div className="flex flex-col">
+                {/* Toilet name input */}
                 <label className="label pb-0.5 pt-2.5 font-bold">Name</label>
                 <InputField
                   type="toilet_name"
@@ -128,6 +153,7 @@ const ToiletModal = ({ open, setOpen, toilet }: ToiletModalProps) => {
                   valueChange={(e) => setToiletName(e.target.value)}
                 />
                 <div className="flex flex-row justify-between space-x-4">
+                  {/* Building name input */}
                   <div className="flex w-[83%] flex-col">
                     <label className="label pb-0.5 pt-2.5 font-bold">Building Name</label>
                     <InputDropdownField
@@ -142,6 +168,7 @@ const ToiletModal = ({ open, setOpen, toilet }: ToiletModalProps) => {
                       list={buildingNames}
                     />
                   </div>
+                  {/* Floor input */}
                   <div className="flex w-[17%] flex-col">
                     <label className="label pb-0.5 pt-2.5 font-bold">Building Floor</label>
                     <InputField
@@ -155,6 +182,7 @@ const ToiletModal = ({ open, setOpen, toilet }: ToiletModalProps) => {
                     />
                   </div>
                 </div>
+                {/* Latitude and longitude display */}
                 <div className="flex flex-row justify-between space-x-4">
                   <div className="flex grow flex-col">
                     <label className="label pb-0.5 pt-2.5 font-bold">Latitude</label>
@@ -182,13 +210,16 @@ const ToiletModal = ({ open, setOpen, toilet }: ToiletModalProps) => {
                   </div>
                 </div>
                 <hr className="my-2 border-t border-gray-700" />
+                {/* Description input */}
                 <label className="label pt-0 text-lg font-bold">Description</label>
                 <TextEditor />
               </div>
+              {/* Map component */}
               <div className="mt-2 flex min-h-[70vh] w-full">
                 <Map middle={true} />
               </div>
             </div>
+            {/* Action buttons */}
             <div className="modal-action justify-center space-x-64">
               <button className={`btn btn-success ${!validSubmit && "btn-disabled"}`} onClick={handleSubmit}>
                 {toilet ? "Submit Edit" : "Create"}

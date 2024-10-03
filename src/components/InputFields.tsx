@@ -27,6 +27,14 @@ interface InputDropdownFieldProps {
   list?: string[];
 }
 
+/**
+ * InputField component
+ *
+ * A reusable input field component with customizable properties.
+ *
+ * @param {InputFieldProps} props - The component props
+ * @returns {JSX.Element} The rendered InputField component
+ */
 export const InputField = ({
   type,
   value,
@@ -35,7 +43,7 @@ export const InputField = ({
   valueMaxLength,
   noInput,
   valueChange,
-}: InputFieldProps) => {
+}: InputFieldProps): JSX.Element => {
   return (
     <input
       type="text"
@@ -53,6 +61,14 @@ export const InputField = ({
   );
 };
 
+/**
+ * InputAreaField component
+ *
+ * A reusable textarea component with customizable properties.
+ *
+ * @param {InputAreaFieldProps} props - The component props
+ * @returns {JSX.Element} The rendered InputAreaField component
+ */
 export const InputAreaField = ({
   type,
   value,
@@ -62,7 +78,7 @@ export const InputAreaField = ({
   noInput,
   valueChange,
   height,
-}: InputAreaFieldProps) => {
+}: InputAreaFieldProps): JSX.Element => {
   return (
     <textarea
       style={{ height: `${height}px` }}
@@ -78,6 +94,14 @@ export const InputAreaField = ({
   );
 };
 
+/**
+ * InputDropdownField component
+ *
+ * A reusable dropdown input field component with customizable properties and filtered list.
+ *
+ * @param {InputDropdownFieldProps} props - The component props
+ * @returns {JSX.Element} The rendered InputDropdownField component
+ */
 export const InputDropdownField = ({
   type,
   value,
@@ -88,17 +112,20 @@ export const InputDropdownField = ({
   noInput,
   valueChange,
   list = [],
-}: InputDropdownFieldProps) => {
+}: InputDropdownFieldProps): JSX.Element => {
+  // Filter the list based on the input value
   const filteredList = useMemo(
     () => list.filter((list) => list.toLowerCase().startsWith(value.toLowerCase())),
     [value, list],
   );
 
+  // Handle selection from the dropdown list
   const valueListChange = (valueList: string) => {
     if (noInput) return;
     setValue(valueList);
     closeDropdown();
   };
+
   return (
     <div className="dropdown dropdown-end h-full w-full">
       <div tabIndex={0} role="button" className="flex h-full w-full grow flex-col">

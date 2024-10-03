@@ -2,6 +2,12 @@ import Link from "next/link";
 import ThemeToggleButton from "./ThemeToggleButton";
 import NavbarLogo from "./NavbarLogo";
 
+/**
+ * Navbar component
+ * This component represents the navbar of the UQPottyPal application.
+ *
+ * @returns {JSX.Element} The rendered Navbar component
+ */
 const Navbar = () => {
   return (
     <div className="navbar flex bg-base-100">

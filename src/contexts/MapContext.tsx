@@ -27,6 +27,11 @@ export interface MapType {
 
 export const Map = createContext<MapType | null>(null);
 
+/** Map context provider
+ * Provides the map context to its children components.
+ * @param {React.ReactNode} children - The children components
+ * @returns {JSX.Element} The rendered MapContextProvider component
+ */
 export const MapContextProvider = ({ children }: { children: React.ReactNode }) => {
   const mapContainer = useRef<HTMLDivElement | null>(null);
   const map = useRef<mapboxgl.Map | null>(null);
@@ -146,6 +151,13 @@ export const MapContextProvider = ({ children }: { children: React.ReactNode }) 
   );
 };
 
+/** useMap hook
+ *
+ * A custom hook to use the map context
+ *
+ * @returns {MapType} The map context
+ * @throws {Error} If the hook is not used within a MapContextProvider
+ */
 export const useMap = () => {
   const context = useContext(Map);
   if (!context) throw new Error("useMap must be used within a MapContextProvider");

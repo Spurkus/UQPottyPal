@@ -22,6 +22,11 @@ interface DeleteReviewModalProps {
   setReviews: React.Dispatch<React.SetStateAction<Review[]>>;
 }
 
+/**
+ * Modal to confirm review deletion.
+ *
+ * @param {DeleteReviewModalProps} props - The props for the delete review modal.
+ */
 const DeleteReviewModal = ({ review, deleteReviewModal, setDeleteReviewModal, setReviews }: DeleteReviewModalProps) => {
   const [loading, setLoading] = useState(false);
 
@@ -62,6 +67,11 @@ const DeleteReviewModal = ({ review, deleteReviewModal, setDeleteReviewModal, se
   );
 };
 
+/**
+ * Displays a review with options to edit or delete.
+ *
+ * @param {ReviewProps} props - The props for displaying the review.
+ */
 const ReviewComponent = ({ review, setReviews }: ReviewProps) => {
   const { setVisible, setEditReview } = useAddEditReview();
   const [deleteReviewModal, setDeleteReviewModal] = useState(false);
@@ -126,6 +136,11 @@ const ReviewComponent = ({ review, setReviews }: ReviewProps) => {
   );
 };
 
+/**
+ * Displays a list of reviews, sorted by timestamp.
+ *
+ * @param {ReviewsProps} props - The props for displaying the list of reviews.
+ */
 const Reviews = ({ reviews, setReviews }: ReviewsProps) => {
   return (
     <>

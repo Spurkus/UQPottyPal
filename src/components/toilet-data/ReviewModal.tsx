@@ -2,6 +2,15 @@ import { InputAreaField, InputField } from "@/components/InputFields";
 import { useAddEditReview } from "@/contexts/AddEditReview";
 import Loading from "@/components/Loading";
 
+/**
+ * ReviewModal component that renders a modal for creating or editing a review.
+ * It uses the AddEditReviewContext to manage the state of the review form.
+ * The modal contains input fields for the review details and a submit button.
+ * When the submit button is clicked, the form data is validated and submitted.
+ * The modal can be closed by clicking the close button.
+ *
+ * @returns {JSX.Element} The modal for creating or editing a review.
+ */
 const ReviewModal = () => {
   const {
     visible,

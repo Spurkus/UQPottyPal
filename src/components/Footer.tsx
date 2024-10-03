@@ -1,5 +1,13 @@
 import Link from "next/link";
 
+/**
+ * Footer component
+ *
+ * This component represents the footer of the UQPottyPal application.
+ * It includes navigation links and a disclaimer.
+ *
+ * @returns {JSX.Element} The rendered
+ */
 const Footer = () => {
   return (
     <footer className="footer footer-center gap-2 bg-base-100 pb-6 pt-3">
