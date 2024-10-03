@@ -14,6 +14,7 @@ import ToiletModal from "@/components/toilet-data/ToiletModal";
 import ReviewButton from "./ReviewButton";
 import QRCodeModal from "@/components/QRCodeModal";
 import DeleteToiletModal from "./DeleteToiletModal";
+import Loading from "@/components/Loading";
 
 interface ToiletPageProps {
   params: {
@@ -49,7 +50,7 @@ const ToiletPage = ({ params }: ToiletPageProps): JSX.Element => {
   }, [params.toilet]);
 
   // If no toilet is found, return nothing
-  if (!toilet) return;
+  if (!toilet) return <Loading />;
 
   return (
     <>
