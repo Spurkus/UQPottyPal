@@ -27,7 +27,9 @@ const OtherToilet = ({ otherToilet }: OtherToiletProps) => {
       className={`btn flex w-full justify-between rounded-2xl bg-base-300 shadow-none hover:btn-accent ${sameToilet && "btn-disabled"}`}
       onClick={handleClick}
     >
-      <h4 className="text-lg font-bold">{otherToilet.name.split(",")[1].slice(1) ?? otherToilet.name}</h4>
+      <h4 className="text-lg font-bold">
+        {otherToilet.name.includes(",") ? otherToilet.name.split(",")[1].slice(1) : otherToilet.name}
+      </h4>
       <p className="font-bold">Floor {otherToilet.floor}</p>
     </button>
   );
